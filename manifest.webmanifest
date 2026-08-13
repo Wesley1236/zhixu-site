@@ -1,0 +1,10 @@
+{
+  "name": "知序 · 个人 AI 成长系统",
+  "short_name": "知序",
+  "description": "目标、英语、精读、技能、AI 教练与个人知识库",
+  "start_url": "/",
+  "display": "standalone",
+  "background_color": "#f7f5ef",
+  "theme_color": "#214e3d",
+  "icons": [{ "src": "/favicon.svg", "sizes": "any", "type": "image/svg+xml", "purpose": "any maskable" }]
+}
