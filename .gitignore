@@ -1,4 +1,5 @@
 prototype/node_modules/
 prototype/.npm-cache/
 prototype/dist/
+qa/
 *.log
