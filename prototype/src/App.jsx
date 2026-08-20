@@ -125,8 +125,9 @@ function MobileNav({ page, setPage }) {
 }
 
 function TopBar({ page, setPage, openUpload, startFocus }) {
+  const today = new Intl.DateTimeFormat("zh-CN", { year:"numeric", month:"2-digit", day:"2-digit", weekday:"long" }).format(new Date());
   return <header className="topbar">
-    <div className="page-heading"><span className="date-line">2026-08-19 · 星期三</span><h1>{pageCopy[page][0]}</h1><p>{pageCopy[page][1]}</p></div>
+    <div className="page-heading"><span className="date-line">{today}</span><h1>{pageCopy[page][0]}</h1><p>{pageCopy[page][1]}</p></div>
     <div className="top-actions">
       <MagneticButton className="secondary" onClick={() => setPage("ai")}><ChatCircle size={19} /><span>询问知识库</span></MagneticButton>
       <MagneticButton className="secondary" onClick={openUpload}><Plus size={19} /><span>快速捕获</span></MagneticButton>
