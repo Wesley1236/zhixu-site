@@ -1,36 +1,37 @@
-# Design QA — 知序 3.0
+# Design QA — 知序 4.0
 
-- source visual truth path: `design/final-home-v3-reference.png`
-- implementation screenshot path: `qa/implementation-v3-desktop.png`
-- reading state screenshot path: `qa/implementation-v3-reading.png`
-- mobile screenshot path: `qa/implementation-v3-mobile.png`
-- combined comparison evidence: `qa/comparison-v3-desktop.png`
-- viewport: desktop 1440 × 1024 CSS px; mobile 390 × 844 CSS px
-- source and implementation pixels: 1440 × 1024 at device scale factor 1; no density normalization required
-- state: dark ocean-cosmos command home; reading sheet open for focused interaction evidence
+- source layout truth: `design/home-v4-layout-reference.png`
+- generated background truth: `design/final-home-v4-background.png`
+- implementation screenshot: `qa/implementation-v4-desktop.png`
+- reading interaction screenshot: `qa/implementation-v4-reading.png`
+- mobile screenshot: `qa/implementation-v4-mobile.png`
+- combined comparison: `qa/comparison-v4-desktop.png`
+- desktop viewport and pixels: 1488 × 1058 CSS px and image px, device scale factor 1
+- mobile viewport: 390 × 844 CSS px; implementation scroll width 390px
+- state: restrained dark glass homepage with static moon-ocean background
 
-## Evidence and required fidelity surfaces
+## Evidence and fidelity surfaces
 
-- Full-view comparison: the combined side-by-side image confirms the floating Dock, dominant circular reading focus, supporting action/knowledge/review modules, deep-ocean environment, and bottom reflection/share affordance.
-- Focused comparison: the reading sheet was inspected separately because form labels and button states are too small in the full view. It contains all three reading steps, three note inputs, completion and explicit share.
-- Fonts and typography: system/SF-compatible stack, optical hierarchy, weights, wrapping and small-label tracking are consistent and readable.
-- Spacing and layout rhythm: desktop orbit has clear separation and no overlaps; mobile becomes a single-column task flow with no horizontal overflow.
-- Colors and visual tokens: cyan/teal/violet glass hierarchy matches the source direction; amber distinguishes action without competing with reading.
-- Image quality and asset fidelity: a dedicated high-resolution raster ocean-cosmos background is used; no screenshot or placeholder replaces the environment. Icons use one Phosphor family.
-- Copy and content: reading, action, evidence, knowledge, review and reflection copy are concrete and aligned to Wesley's growth. IBC is not a core goal.
+- Full-view comparison: the side-by-side image confirms the selected three-module hierarchy, floating top Dock, top signature/greeting and bottom reflection bar. The quieter background and single-layer glass edge are intentional responses to the user's request to remove visual clutter.
+- Focused evidence: the reading overlay was captured separately and retains the three-step reading and note workflow. No extra crop is required because desktop labels remain readable at native size.
+- Typography: system and Songti-compatible Chinese stacks provide a clear display/body hierarchy; tracking and leading remain legible over the photographic background.
+- Spacing and layout: the center reading module is dominant, side modules align symmetrically, and all desktop content fits the selected viewport without overflow.
+- Color and tokens: low-saturation blue-gray, restrained teal status color, one cool glass edge and high-contrast text replace the prior neon palette.
+- Image quality: the background is a dedicated high-resolution generated raster with correct 16:10 crop and clean UI-negative space; it contains no baked interface elements.
+- Copy and content: specific action, book, chapter, reading method, AI uses and reflection prompt match the personal-growth brief; IBC is not central.
 
 ## Interaction and accessibility checks
 
-- Tested: dashboard → reading sheet, step completion, note entry, local save, close, dashboard → knowledge library → dashboard.
-- Browser console: no errors or warnings during the final pass.
-- Keyboard focus, 44px primary controls, reduced motion, reduced transparency, and increased contrast fallbacks are present.
-- Mobile 390px: `scrollWidth === innerWidth`; no horizontal overflow.
+- Tested: reading module open/close, knowledge-and-AI module → AI page → dashboard.
+- Browser console: no errors or warnings.
+- Mobile: no horizontal overflow; modules become one continuous vertical task path.
+- Immediate press states, spring transitions, focus-visible, reduced motion, reduced transparency and increased contrast fallbacks remain implemented.
 
 ## Comparison history
 
-1. P1 — the central reading module initially rendered down and right because motion transforms superseded CSS translation. Fixed with transform-safe centering margins. Post-fix evidence: `qa/implementation-v3-desktop.png`.
-2. P2 — non-dashboard pages exposed both the spatial Dock and sidebar. Fixed by limiting the Dock to the command-home visual state; the final test found one visible “总览” control.
-3. P2 — the homepage lacked a complete reading-output loop. Fixed with step checks, three note fields, local persistence, completion evidence and explicit share. Evidence: `qa/implementation-v3-reading.png`.
+1. P1 — the first light sunrise direction was rejected by the user as too decorative. It was fully discarded before implementation.
+2. P2 — the initial 720px-height pass clipped the cards behind the reflection bar. Added a compact-height layout with shorter panels and tighter reading rhythm. The 1488 × 1058 final capture has no clipping.
+3. P2 — the prior four-orbit structure did not match the chosen three-panel reference. Rebuilt the homepage as action / reading / knowledge-and-AI with concrete content and direct navigation.
 
 ## Findings
 
@@ -38,7 +39,6 @@ No actionable P0, P1, or P2 findings remain.
 
 ## Follow-up polish
 
-- P3: future reading assignments can rotate from a local reading-plan file instead of one seeded book.
-- P3: a future secure user-owned proxy may augment local retrieval; no browser model key should be introduced.
+- P3: keep the background static by default; optional video should only return after a separately approved restrained motion study.
 
 final result: passed
