@@ -38,3 +38,20 @@
 @media(min-width:901px){.strict-reference.hub-home{display:grid;grid-template-columns:215px minmax(0,1fr);gap:18px;min-height:100vh;padding:24px 16px}.strict-reference .hub-sidebar{height:752px;min-height:0}.strict-reference .hub-main{position:relative;display:block;height:1010px;padding:0}.strict-reference .hub-search{position:absolute;left:319px;top:24px;width:536px}.strict-reference .hub-top-icon:nth-of-type(1){left:934px;top:34px}.strict-reference .hub-top-icon:nth-of-type(2){left:982px;top:34px}.strict-reference .hub-time{position:absolute;left:1111px;top:24px;width:121px}.strict-reference .hub-greeting{position:absolute;left:36px;top:128px;width:974px}.strict-reference .focus-glass{position:absolute;left:17px;top:257px;width:237px;height:215px}.strict-reference .quick-glass{position:absolute;left:17px;top:579px;width:228px;height:126px}.strict-reference .hub-center{left:270px;top:176px;width:540px;height:590px}.strict-reference .stats-glass{left:866px;top:258px;width:252px;height:225px}.strict-reference .activity-glass{left:866px;top:503px;width:252px;height:202px}.strict-reference .hub-ask{left:179px;top:781px;width:634px}.strict-reference .hub-prompts{left:179px;top:853px}}
 @media(max-width:900px){.strict-reference .hub-main{display:grid;grid-template-rows:auto auto auto auto auto auto;gap:12px}.strict-reference .hub-top{display:grid}.strict-reference .hub-top-icon{position:relative}.strict-reference .hub-greeting,.strict-reference .focus-glass,.strict-reference .quick-glass,.strict-reference .hub-center,.strict-reference .stats-glass,.strict-reference .activity-glass,.strict-reference .hub-ask,.strict-reference .hub-prompts{position:relative;left:auto;top:auto;width:100%;height:auto}.strict-reference .hub-center{grid-row:auto;height:540px}.strict-reference .focus-glass{min-height:215px}.strict-reference .quick-glass{min-height:126px}.strict-reference .stats-glass{min-height:225px}.strict-reference .activity-glass{min-height:202px}.strict-reference .hub-ask{justify-self:auto}.strict-reference .hub-prompts{overflow-x:auto}}
 @media(max-width:620px){.strict-reference .hub-sidebar nav{display:none}.strict-reference .hub-sidebar{grid-template-columns:1fr auto}.strict-reference .hub-greeting blockquote{display:none}}
+
+/* V7 — centered, readable and spatially balanced on wide displays */
+.strict-reference .hub-card-title{font-size:11px}
+.strict-reference .hub-brand strong{font-size:14px}
+.strict-reference .hub-sidebar nav button span{font-size:11px}
+.strict-reference .hub-profile strong{font-size:10px}
+.strict-reference .hub-profile small{font-size:8px}
+.strict-reference .hub-greeting h1{font-size:30px}
+.strict-reference .hub-greeting p{font-size:12px;color:#5c7083}
+.strict-reference .hub-greeting blockquote{font-size:11px;color:#6b7b89}
+.strict-reference .hub-module strong{font-size:9px}
+.strict-reference .hub-ask input{font-size:10px}
+.strict-reference .hub-prompts button{font-size:7px}
+@media(min-width:1680px) and (min-height:1000px){
+  .is-command-home .page-stage{position:relative;width:100vw;height:100vh;min-height:0;overflow:hidden}
+  .strict-reference.hub-home{--hub-canvas-scale:min(calc((100vw - 48px) / 1488px),calc((100vh - 24px) / 1058px),1.65);position:absolute;left:50%;top:50%;width:1488px;height:1058px;min-height:0;transform:translate(-50%,-50%) scale(var(--hub-canvas-scale));transform-origin:center center}
+}

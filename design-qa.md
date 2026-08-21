@@ -33,3 +33,36 @@
 No actionable P0, P1, or P2 findings remain.
 
 final result: passed
+
+---
+
+# Design QA — 知序 7.0 wide-screen layout pass
+
+- issue reference: user-provided 3758 × 1892 wide-screen screenshot
+- implementation: `qa/implementation-v7-ultrawide.png`
+- reference-size implementation: `qa/implementation-v7-reference.png`
+- mobile implementation: `qa/implementation-v7-mobile.png`
+- before/after comparison: `qa/comparison-v7-ultrawide.png`
+
+## Visual verification
+
+- The 1488 × 1058 reference geometry remains intact at its native breakpoint.
+- At 3758 × 1892, the full dashboard scales uniformly to 1.65× and is centered on both axes.
+- Measured horizontal margins are exactly balanced at approximately 651 px per side; vertical margins are approximately 73 px.
+- The previous large one-sided empty region is removed without stretching individual cards or distorting the AI artwork.
+- Key heading, navigation, module labels, profile labels, quote, and AI input copy were increased for clearer reading.
+- The existing lake-office background, restrained pale glass material, module hierarchy, and interaction model remain unchanged.
+
+## Responsive and interaction checks
+
+- Ultra-wide viewport 3758 × 1892: 0 px horizontal overflow and 0 px vertical overflow.
+- Reference viewport 1488 × 1058: exact viewport fit with no overflow.
+- Mobile viewport 390 × 844: document width 382 px and no horizontal overflow.
+- Knowledge Base navigation resolves to the functional knowledge library.
+- Upload opens the classification/upload interaction.
+- Browser console at the final tested state: 0 errors and 0 warnings.
+- Production build succeeds.
+
+No actionable P0, P1, or P2 findings remain.
+
+final result: passed
