@@ -1,44 +1,34 @@
-# Design QA — 知序 5.0
+# Design QA — 知序 6.0 strict reference build
 
-- background source: `design/home-v5-background.png`
-- interface reference: `design/home-v5-interface-reference.png`
-- desktop implementation: `qa/implementation-v5-desktop.png`
-- light library implementation: `qa/implementation-v5-library.png`
-- mobile implementation: `qa/implementation-v5-mobile.png`
-- side-by-side comparison: `qa/comparison-v5-desktop.png`
-- desktop viewport/image: 1488 × 1058 CSS px / 1488 × 1058 px
-- mobile viewport: 390 × 844 CSS px; measured page width 382 px within 390 px viewport, no horizontal overflow
-- state: dashboard loaded with all overlays closed
+- source visual: `design/home-v5-interface-reference.png`
+- implementation: `qa/implementation-v6-desktop.png`
+- mobile: `qa/implementation-v6-mobile.png`
+- same-state comparison: `qa/comparison-v6-desktop.png`
+- source and implementation: 1488 × 1058 px, dashboard state, overlays closed
 
-## Same-state comparison
+## Fidelity verification
 
-The source reference and implementation were combined at native, matching dimensions. The final page preserves the same background crop, full-height left navigation, centered growth hub, left focus/quick-access stack, right statistics/activity stack, top search, and bottom knowledge query field. The implementation intentionally removes the reference's decorative holographic orbit and replaces it with restrained translucent modules so the supplied office photograph remains the visual anchor.
+- The supplied lake-office image remains the exact full-bleed background with the same crop.
+- Sidebar bounds, 215 px width, 24 px top inset, 752 px height, navigation rhythm, active row, and profile row match the reference.
+- Search, utility icons, time card, greeting, quote, Daily Focus, Quick Access, Knowledge Stats, Recent Activity, bottom AI field, and prompt chips match the reference positions and proportions.
+- All six central glass modules match the reference coordinates. The central AI cube, orbit trails, and lower pedestal use a dedicated transparent raster asset; the pedestal was separately composited to match the lower reference position.
+- Typography, pale glass opacity, white specular borders, restrained blue accents, radii, and shadows were tuned from the side-by-side native-size comparison.
 
-## Visual evidence
+## Interaction and responsive checks
 
-- Typography: dark navy system type remains readable over the bright sky; Songti is limited to the small brand mark.
-- Materials: every primary frame uses the same light translucent glass recipe with a white edge, soft inner highlight, background blur, and neutral blue-gray shadow. There are no opaque dark panels.
-- Spacing: desktop content fits the 1488 × 1058 viewport exactly with no scrollbars or clipped cards.
-- Color: cool blue-gray ink and one restrained blue action color harmonize with the lake, sky, and glass architecture.
-- Background: the exact user-provided lake-view office image is used as the full-page background; no baked UI or text was added to it.
-- Copy: the focus task, knowledge statistics, concrete deep-reading task, uploads, AI entry, goals, and review all serve personal growth; IBC is not presented as a core goal.
+- Dashboard module callbacks remain wired to Knowledge Base, AI Assistant, Projects, Notes/deep reading, Upload, and Timeline.
+- Search, notification, calendar, Daily Focus, Quick Access, statistics, activity rows, profile, AI submit, and prompt chips remain interactive.
+- Desktop measures 1488 × 1058 with no horizontal or vertical overflow.
+- Mobile measures 390 × 844 with 382 px document width, no horizontal overflow, and 32 visible interactive controls.
+- Browser console at the final desktop state: 0 errors and 0 warnings.
+- Production build succeeds.
 
-## Interaction and accessibility checks
+## Findings
 
-- Verified navigation: dashboard → knowledge library → dashboard; dashboard → AI workspace → dashboard.
-- Verified overlays: reading task opens and closes; categorized upload sheet opens and closes.
-- All dashboard cards and modules are buttons, forms, or contain direct actionable controls with hover, press, and spring feedback.
-- Knowledge library remains functional with classification, search, sorting, grid/list controls, selection, favorites, details, archive, and local upload flow.
-- Browser console: 0 warnings and 0 errors.
-- Mobile: 31 visible interactive controls; no horizontal overflow; content becomes a single scrollable vertical workflow.
-- Reduced-motion, reduced-transparency, and increased-contrast fallbacks remain available.
-
-## Findings and fixes
-
-1. P1 — earlier dark/neon treatment conflicted with the supplied bright background. Replaced the entire dashboard material system with light glass and dark navy typography.
-2. P1 — earlier homepage hierarchy felt abrupt. Rebuilt it around one central growth hub with six surrounding destination modules and balanced support cards.
-3. P2 — route transitions take approximately 3 seconds because the existing spring/blur exit completes before the next page enters. Verified that each tested destination resolves correctly and remains interruptible.
-4. P2 — mobile content exceeds one viewport vertically by design; it is a continuous scroll with no horizontal overflow or hidden functionality.
+1. P1 — previous version used a different center hierarchy and full-height sidebar. Rebuilt to the reference geometry.
+2. P1 — previous center used a generic growth card. Replaced with a dedicated AI glass cube, orbital glow, and holographic pedestal.
+3. P2 — lower modules and pedestal initially sat too high. Measured and moved them to the reference coordinates.
+4. P2 — quote and Daily Focus contents initially missed their reference positions. Corrected with exact offsets.
 
 No actionable P0, P1, or P2 findings remain.
 

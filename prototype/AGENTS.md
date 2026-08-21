@@ -17,3 +17,4 @@ Build app UI in `src/`. Keep `.openai/hosting.json`, `worker/index.js`, `scripts
 - Motion should feel spatial and spring-based: gliding active glass lenses, refractive sheets, shared-element-like page transitions, magnetic buttons, hover spotlights, and flowing knowledge energy. Respect `prefers-reduced-motion`.
 - Current visual source of truth: use the user-provided bright lake-office photograph as the full-site background and the user-provided light knowledge-hub screenshot as the layout/material reference.
 - All visible homepage frames must be functional, light translucent glass with dark navy text. Avoid dark opaque cards, neon overload, and decorative effects that do not communicate state.
+- Treat `design/home-v5-interface-reference.png` as strict homepage geometry: preserve its short left rail, exact card coordinates, central AI cube/orbits/pedestal, English labels, top search, and bottom AI prompt layout unless the user explicitly selects a new reference.
