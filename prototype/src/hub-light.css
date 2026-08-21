@@ -1,4 +1,6 @@
+@font-face{font-family:"诗云圆润体";src:url("/zhixu-site/fonts/LXGW975YuanSC-500W.ttf") format("truetype");font-style:normal;font-weight:400 800;font-display:swap}
 :root{--hub-ink:#152233;--hub-muted:#55677a;--hub-blue:#3978d5;--hub-glass:rgba(238,246,251,.34);--hub-line:rgba(255,255,255,.7)}
+.app-shell,.app-shell button,.app-shell input,.app-shell textarea,.app-shell select{font-family:"诗云圆润体","Microsoft YaHei UI","PingFang SC",sans-serif}
 .app-shell{color:var(--hub-ink);background:#d9e6ed}.ambient-background{opacity:1!important;filter:saturate(.88) contrast(.98) brightness(1.02)!important}.ambient-scrim{background:rgba(239,246,250,.1)!important}
 .light-glass,.glass-surface,.glass-surface-static{background:var(--hub-glass)!important;border:1px solid var(--hub-line)!important;box-shadow:inset 0 1px 0 rgba(255,255,255,.72),inset 0 -1px 0 rgba(100,139,171,.09),0 18px 48px rgba(50,74,94,.13)!important;backdrop-filter:blur(30px) saturate(145%)!important;-webkit-backdrop-filter:blur(30px) saturate(145%)!important;color:var(--hub-ink)}
 .is-command-home .spatial-dock,.is-command-home>.mobile-nav{display:none!important}.is-command-home .app-main{padding:0;margin:0}.is-command-home .page-stage{min-height:100vh}
@@ -54,4 +56,26 @@
 @media(min-width:1680px) and (min-height:1000px){
   .is-command-home .page-stage{position:relative;width:100vw;height:100vh;min-height:0;overflow:hidden}
   .strict-reference.hub-home{--hub-canvas-scale:min(calc((100vw - 48px) / 1488px),calc((100vh - 24px) / 1058px),1.65);position:absolute;left:50%;top:50%;width:1488px;height:1058px;min-height:0;transform:translate(-50%,-50%) scale(var(--hub-canvas-scale));transform-origin:center center}
+}
+
+/* V8 — wider cards, rounded typography and reduced dead space */
+.strict-reference,.strict-reference button{font-family:"诗云圆润体","Microsoft YaHei UI","PingFang SC",sans-serif}
+.strict-reference .hub-brand strong{font-size:16px}.strict-reference .hub-sidebar nav button span{font-size:13px}.strict-reference .hub-profile strong{font-size:12px}.strict-reference .hub-profile small{font-size:9px}
+.strict-reference .hub-search input{font-size:13px}.strict-reference .hub-time strong{font-size:13px}.strict-reference .hub-time small{font-size:9px}
+.strict-reference .hub-greeting h1{font-size:34px}.strict-reference .hub-greeting p{font-size:14px}.strict-reference .hub-greeting blockquote{font-size:13px}
+.strict-reference .hub-card-title{font-size:13px}.strict-reference .focus-ring b{font-size:24px}.strict-reference .focus-ring small,.strict-reference .focus-content ul{font-size:9px}.strict-reference .quick-glass button small{font-size:8px}
+.strict-reference .hub-module{width:112px;height:112px}.strict-reference .hub-module strong{font-size:11px}.strict-reference .stats-glass b{font-size:22px}.strict-reference .stats-glass small{font-size:9px}.strict-reference .stats-days{font-size:7px}.strict-reference .activity-glass>button strong{font-size:9px}.strict-reference .activity-glass>button small{font-size:8px}.strict-reference .hub-ask input{font-size:12px}.strict-reference .hub-prompts button{font-size:9px}
+@media(min-width:1680px) and (min-height:1000px){
+  .strict-reference.hub-home{--hub-canvas-scale:min(calc((100vw - 48px) / 1680px),calc((100vh - 24px) / 1058px),1.78);width:1680px;grid-template-columns:240px minmax(0,1fr);gap:24px}
+  .strict-reference .hub-sidebar{height:930px;padding-inline:20px}
+  .strict-reference .hub-search{left:340px;top:24px;width:630px}
+  .strict-reference .hub-top-icon:nth-of-type(1){left:1100px;top:34px}.strict-reference .hub-top-icon:nth-of-type(2){left:1150px;top:34px}
+  .strict-reference .hub-time{left:1240px;top:24px;width:120px}
+  .strict-reference .hub-greeting{left:50px;top:112px;width:1300px}.strict-reference .hub-greeting blockquote{left:1040px;top:0;width:280px}
+  .strict-reference .focus-glass{left:28px;top:238px;width:295px;height:250px}.strict-reference .focus-content{top:84px;grid-template-columns:105px 1fr}.strict-reference .focus-ring{width:96px;height:96px}
+  .strict-reference .quick-glass{left:28px;top:556px;width:290px;height:155px}
+  .strict-reference .hub-center{left:340px;top:150px;width:650px;height:650px}
+  .strict-reference .hub-module{width:124px;height:124px;border-radius:28px}.strict-reference .module-1,.strict-reference .module-3{left:30px}.strict-reference .module-2,.strict-reference .module-5{right:30px}.strict-reference .module-3,.strict-reference .module-5{top:402px}.strict-reference .module-4{top:432px}
+  .strict-reference .stats-glass{left:1060px;top:238px;width:310px;height:250px}.strict-reference .activity-glass{left:1060px;top:515px;width:310px;height:245px}.strict-reference .activity-glass>button{min-height:46px}.strict-reference .activity-glass strong,.strict-reference .activity-glass small{max-width:185px}
+  .strict-reference .hub-ask{left:300px;top:820px;width:780px;height:62px}.strict-reference .hub-prompts{left:300px;top:900px;width:780px}
 }

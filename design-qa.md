@@ -66,3 +66,36 @@ final result: passed
 No actionable P0, P1, or P2 findings remain.
 
 final result: passed
+
+---
+
+# Design QA — 知序 8.0 larger rounded UI pass
+
+- issue reference: user-provided 3758 × 1892 screenshot
+- implementation: `qa/implementation-v8-ultrawide.png`
+- reference-size implementation: `qa/implementation-v8-reference.png`
+- mobile implementation: `qa/implementation-v8-mobile.png`
+- before/after comparison: `qa/comparison-v8-ultrawide.png`
+
+## Visual verification
+
+- The ultrawide reference canvas expands from 1488 to 1680 design pixels and renders at approximately 2966 px wide.
+- Horizontal margins are balanced at approximately 396 px per side, reduced from approximately 651 px in V7.
+- Daily Focus renders at approximately 521 × 441 px and Knowledge Stats at approximately 547 × 441 px in the target viewport.
+- Sidebar, quick access, six orbit modules, AI artwork, right-side cards, search, prompt bar, and chips are visibly larger and more tightly grouped.
+- All product text uses the self-hosted rounded Chinese font; browser font loading checks pass.
+- Knowledge Base remains on one line at the 1488 × 1058 reference viewport after enlarging the module frame.
+
+## Responsive, interaction, and build checks
+
+- Ultra-wide viewport 3758 × 1892: 0 px horizontal and vertical overflow.
+- Reference viewport 1488 × 1058: 0 px horizontal and vertical overflow.
+- Mobile viewport 390 × 844: 382 px document width and no horizontal overflow.
+- Knowledge Base navigation remains functional.
+- Browser console at final state: 0 errors and 0 warnings.
+- Production build succeeds in 35.22 seconds.
+- Font source is the GitHub project `lxgw/975Yuan`; the bundled license is SIL Open Font License 1.1.
+
+No actionable P0, P1, or P2 findings remain.
+
+final result: passed
