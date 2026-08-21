@@ -1,44 +1,45 @@
-# Design QA — 知序 4.0
+# Design QA — 知序 5.0
 
-- source layout truth: `design/home-v4-layout-reference.png`
-- generated background truth: `design/final-home-v4-background.png`
-- implementation screenshot: `qa/implementation-v4-desktop.png`
-- reading interaction screenshot: `qa/implementation-v4-reading.png`
-- mobile screenshot: `qa/implementation-v4-mobile.png`
-- combined comparison: `qa/comparison-v4-desktop.png`
-- desktop viewport and pixels: 1488 × 1058 CSS px and image px, device scale factor 1
-- mobile viewport: 390 × 844 CSS px; implementation scroll width 390px
-- state: restrained dark glass homepage with static moon-ocean background
+- background source: `design/home-v5-background.png`
+- interface reference: `design/home-v5-interface-reference.png`
+- desktop implementation: `qa/implementation-v5-desktop.png`
+- light library implementation: `qa/implementation-v5-library.png`
+- mobile implementation: `qa/implementation-v5-mobile.png`
+- side-by-side comparison: `qa/comparison-v5-desktop.png`
+- desktop viewport/image: 1488 × 1058 CSS px / 1488 × 1058 px
+- mobile viewport: 390 × 844 CSS px; measured page width 382 px within 390 px viewport, no horizontal overflow
+- state: dashboard loaded with all overlays closed
 
-## Evidence and fidelity surfaces
+## Same-state comparison
 
-- Full-view comparison: the side-by-side image confirms the selected three-module hierarchy, floating top Dock, top signature/greeting and bottom reflection bar. The quieter background and single-layer glass edge are intentional responses to the user's request to remove visual clutter.
-- Focused evidence: the reading overlay was captured separately and retains the three-step reading and note workflow. No extra crop is required because desktop labels remain readable at native size.
-- Typography: system and Songti-compatible Chinese stacks provide a clear display/body hierarchy; tracking and leading remain legible over the photographic background.
-- Spacing and layout: the center reading module is dominant, side modules align symmetrically, and all desktop content fits the selected viewport without overflow.
-- Color and tokens: low-saturation blue-gray, restrained teal status color, one cool glass edge and high-contrast text replace the prior neon palette.
-- Image quality: the background is a dedicated high-resolution generated raster with correct 16:10 crop and clean UI-negative space; it contains no baked interface elements.
-- Copy and content: specific action, book, chapter, reading method, AI uses and reflection prompt match the personal-growth brief; IBC is not central.
+The source reference and implementation were combined at native, matching dimensions. The final page preserves the same background crop, full-height left navigation, centered growth hub, left focus/quick-access stack, right statistics/activity stack, top search, and bottom knowledge query field. The implementation intentionally removes the reference's decorative holographic orbit and replaces it with restrained translucent modules so the supplied office photograph remains the visual anchor.
+
+## Visual evidence
+
+- Typography: dark navy system type remains readable over the bright sky; Songti is limited to the small brand mark.
+- Materials: every primary frame uses the same light translucent glass recipe with a white edge, soft inner highlight, background blur, and neutral blue-gray shadow. There are no opaque dark panels.
+- Spacing: desktop content fits the 1488 × 1058 viewport exactly with no scrollbars or clipped cards.
+- Color: cool blue-gray ink and one restrained blue action color harmonize with the lake, sky, and glass architecture.
+- Background: the exact user-provided lake-view office image is used as the full-page background; no baked UI or text was added to it.
+- Copy: the focus task, knowledge statistics, concrete deep-reading task, uploads, AI entry, goals, and review all serve personal growth; IBC is not presented as a core goal.
 
 ## Interaction and accessibility checks
 
-- Tested: reading module open/close, knowledge-and-AI module → AI page → dashboard.
-- Browser console: no errors or warnings.
-- Mobile: no horizontal overflow; modules become one continuous vertical task path.
-- Immediate press states, spring transitions, focus-visible, reduced motion, reduced transparency and increased contrast fallbacks remain implemented.
+- Verified navigation: dashboard → knowledge library → dashboard; dashboard → AI workspace → dashboard.
+- Verified overlays: reading task opens and closes; categorized upload sheet opens and closes.
+- All dashboard cards and modules are buttons, forms, or contain direct actionable controls with hover, press, and spring feedback.
+- Knowledge library remains functional with classification, search, sorting, grid/list controls, selection, favorites, details, archive, and local upload flow.
+- Browser console: 0 warnings and 0 errors.
+- Mobile: 31 visible interactive controls; no horizontal overflow; content becomes a single scrollable vertical workflow.
+- Reduced-motion, reduced-transparency, and increased-contrast fallbacks remain available.
 
-## Comparison history
+## Findings and fixes
 
-1. P1 — the first light sunrise direction was rejected by the user as too decorative. It was fully discarded before implementation.
-2. P2 — the initial 720px-height pass clipped the cards behind the reflection bar. Added a compact-height layout with shorter panels and tighter reading rhythm. The 1488 × 1058 final capture has no clipping.
-3. P2 — the prior four-orbit structure did not match the chosen three-panel reference. Rebuilt the homepage as action / reading / knowledge-and-AI with concrete content and direct navigation.
-
-## Findings
+1. P1 — earlier dark/neon treatment conflicted with the supplied bright background. Replaced the entire dashboard material system with light glass and dark navy typography.
+2. P1 — earlier homepage hierarchy felt abrupt. Rebuilt it around one central growth hub with six surrounding destination modules and balanced support cards.
+3. P2 — route transitions take approximately 3 seconds because the existing spring/blur exit completes before the next page enters. Verified that each tested destination resolves correctly and remains interruptible.
+4. P2 — mobile content exceeds one viewport vertically by design; it is a continuous scroll with no horizontal overflow or hidden functionality.
 
 No actionable P0, P1, or P2 findings remain.
-
-## Follow-up polish
-
-- P3: keep the background static by default; optional video should only return after a separately approved restrained motion study.
 
 final result: passed

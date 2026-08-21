@@ -15,3 +15,5 @@ Build app UI in `src/`. Keep `.openai/hosting.json`, `worker/index.js`, `scripts
 - The deliverable is GitHub-first and GitHub Pages-compatible. Do not rely on OpenAI Sites, ChatGPT hosting, server-only rendering, private runtime headers, or browser-exposed model keys.
 - Uploads, organization state, theme preferences, and text knowledge content should persist locally in the browser. Text and Markdown content must participate in local retrieval and citations; unsupported binary parsing must be represented honestly.
 - Motion should feel spatial and spring-based: gliding active glass lenses, refractive sheets, shared-element-like page transitions, magnetic buttons, hover spotlights, and flowing knowledge energy. Respect `prefers-reduced-motion`.
+- Current visual source of truth: use the user-provided bright lake-office photograph as the full-site background and the user-provided light knowledge-hub screenshot as the layout/material reference.
+- All visible homepage frames must be functional, light translucent glass with dark navy text. Avoid dark opaque cards, neon overload, and decorative effects that do not communicate state.
