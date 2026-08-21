@@ -1,46 +1,44 @@
-# Design QA — 知序 2.0
+# Design QA — 知序 3.0
 
-## Comparison target
-
-- Source visual truth: `C:\Users\Wesle\.codex\generated_images\01a01a7b-766a-74c2-82a5-4ba7c43b205b\exec-57182142-8e90-4be0-afc0-1429d0417a74.png`
-- Browser-rendered implementation: `D:\Programming\Codex\02_personal Wiki\zhixu-site\qa\implementation-desktop.png`
-- Combined comparison: `D:\Programming\Codex\02_personal Wiki\zhixu-site\qa\comparison-desktop.png` (source left, implementation right)
-- Responsive evidence: `D:\Programming\Codex\02_personal Wiki\zhixu-site\qa\implementation-mobile.png`
-- Live URL: `https://wesley1236.github.io/zhixu-site/`
-- Desktop normalization: source and implementation are both 1488 × 1058 px at a 1488 × 1058 CSS viewport and device scale factor 1.
-- Mobile viewport: 390 × 844 CSS px; no horizontal overflow (`scrollWidth 382`, `innerWidth 390`).
-- State: dashboard, aurora theme, seeded personal-growth data.
+- source visual truth path: `design/final-home-v3-reference.png`
+- implementation screenshot path: `qa/implementation-v3-desktop.png`
+- reading state screenshot path: `qa/implementation-v3-reading.png`
+- mobile screenshot path: `qa/implementation-v3-mobile.png`
+- combined comparison evidence: `qa/comparison-v3-desktop.png`
+- viewport: desktop 1440 × 1024 CSS px; mobile 390 × 844 CSS px
+- source and implementation pixels: 1440 × 1024 at device scale factor 1; no density normalization required
+- state: dark ocean-cosmos command home; reading sheet open for focused interaction evidence
 
 ## Evidence and required fidelity surfaces
 
-- Full-view comparison: inspected in one 2976 × 1058 side-by-side image. The same information hierarchy, sidebar/main/assistant/dock proportions, dark glass language, five growth domains and aurora-cosmos art direction are preserved.
-- Focused regions: no separate crop was required; the combined image keeps the header, constellation, assistant rail, focus card and rhythm dock readable at native height.
-- Fonts and typography: Chinese system sans fallback, optical weights, wrapping and hierarchy are consistent and readable. The implementation is slightly more compact than the concept but does not lose hierarchy.
-- Spacing and layout rhythm: desktop regions align cleanly; cards, radii and glass elevation are coherent. The mobile constellation was reflowed so the central title no longer overlaps domain nodes.
-- Colors and tokens: deep navy, cyan, mint, violet and amber tokens match the reference intent with adequate contrast. The implementation intentionally uses a more restrained glow level.
-- Image quality and assets: the generated 2048 × 1280 aurora background is sharp, correctly cropped and integrated behind real glass surfaces; Phosphor icons remain consistent.
-- Copy and content: whole-person growth is the core. IBC is not a primary goal or visible home-page emphasis.
+- Full-view comparison: the combined side-by-side image confirms the floating Dock, dominant circular reading focus, supporting action/knowledge/review modules, deep-ocean environment, and bottom reflection/share affordance.
+- Focused comparison: the reading sheet was inspected separately because form labels and button states are too small in the full view. It contains all three reading steps, three note inputs, completion and explicit share.
+- Fonts and typography: system/SF-compatible stack, optical hierarchy, weights, wrapping and small-label tracking are consistent and readable.
+- Spacing and layout rhythm: desktop orbit has clear separation and no overlaps; mobile becomes a single-column task flow with no horizontal overflow.
+- Colors and visual tokens: cyan/teal/violet glass hierarchy matches the source direction; amber distinguishes action without competing with reading.
+- Image quality and asset fidelity: a dedicated high-resolution raster ocean-cosmos background is used; no screenshot or placeholder replaces the environment. Icons use one Phosphor family.
+- Copy and content: reading, action, evidence, knowledge, review and reflection copy are concrete and aligned to Wesley's growth. IBC is not a core goal.
 
-## Interaction verification
+## Interaction and accessibility checks
 
-- GitHub Pages workflow build and deploy: passed.
-- Main navigation and mobile navigation: passed.
-- Knowledge library rendering, search/sort controls and categorized-upload modal: passed.
-- Local knowledge question: returned `先推进：向量数据库实践` with three cited sources.
-- Desktop 1488 × 1058 and mobile 390 × 844: passed.
-- Browser console errors/warnings: none.
-- Background motion honors `prefers-reduced-motion` in CSS.
-
-## Findings
-
-- No actionable P0, P1 or P2 findings remain.
-- P3: the source concept uses brighter orbit lines and a stronger violet highlight on the primary CTA. The implementation's calmer treatment is acceptable for sustained daily use and preserves the chosen Apple-like glass direction.
+- Tested: dashboard → reading sheet, step completion, note entry, local save, close, dashboard → knowledge library → dashboard.
+- Browser console: no errors or warnings during the final pass.
+- Keyboard focus, 44px primary controls, reduced motion, reduced transparency, and increased contrast fallbacks are present.
+- Mobile 390px: `scrollWidth === innerWidth`; no horizontal overflow.
 
 ## Comparison history
 
-1. Pass 1 was blocked because the in-app browser could not access the local preview.
-2. Pass 2 used the deployed GitHub Pages site. It found one P2 mobile issue: the central “成长主线” copy overlapped the second row of domain nodes.
-3. Fix: moved the mobile core below the domain grid, increased the canvas height, added flow spacing, and replaced the hard-coded date with the current localized date.
-4. Pass 3 recaptured the deployed desktop and mobile states. The overlap is removed, horizontal overflow is absent, core interactions pass and the console is clean.
+1. P1 — the central reading module initially rendered down and right because motion transforms superseded CSS translation. Fixed with transform-safe centering margins. Post-fix evidence: `qa/implementation-v3-desktop.png`.
+2. P2 — non-dashboard pages exposed both the spatial Dock and sidebar. Fixed by limiting the Dock to the command-home visual state; the final test found one visible “总览” control.
+3. P2 — the homepage lacked a complete reading-output loop. Fixed with step checks, three note fields, local persistence, completion evidence and explicit share. Evidence: `qa/implementation-v3-reading.png`.
+
+## Findings
+
+No actionable P0, P1, or P2 findings remain.
+
+## Follow-up polish
+
+- P3: future reading assignments can rotate from a local reading-plan file instead of one seeded book.
+- P3: a future secure user-owned proxy may augment local retrieval; no browser model key should be introduced.
 
 final result: passed
