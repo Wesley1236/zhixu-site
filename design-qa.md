@@ -36,6 +36,36 @@ final result: passed
 
 ---
 
+# Design QA — 知序 9.0 rotating K knowledge core
+
+- visual source: `prototype/public/design/home-v9-layout-reference.png`
+- generated center asset: `prototype/public/k-crystal-core-v9.png`
+- tested desktop state: 1680 × 945
+- tested compact desktop state: 1280 × 720
+
+## Visual verification
+
+- Rebalanced the homepage to the selected airy three-column composition with a slim rail, left focus area, central orbit, and right knowledge summary.
+- Replaced the previous AI cube/pedestal with a dedicated transparent faceted crystal asset and a legible HTML K overlay.
+- Reduced glass opacity, blur weight, shadows, and corner radii so the lake-office background remains present without sacrificing dark-navy text contrast.
+- Added the quote author, search keyboard hint, lighter cards, and a tighter bottom AI prompt grouping.
+
+## Interaction, motion, and build checks
+
+- K core rotation is active at 42 seconds per revolution; computed transforms change over time.
+- Clicking the K core opens the functional AI knowledge page, and the dashboard navigation returns correctly.
+- Six surrounding modules, Daily Focus, Quick Access, statistics, recent files, search, and AI prompt remain interactive.
+- `prefers-reduced-motion` disables the continuous core animation.
+- 1680 × 945 and 1280 × 720 layouts fit their viewports without horizontal overflow.
+- Browser console at final tested state: 0 errors and 0 warnings.
+- Production build succeeds.
+
+No actionable P0, P1, or P2 findings remain.
+
+final result: passed
+
+---
+
 # Design QA — 知序 7.0 wide-screen layout pass
 
 - issue reference: user-provided 3758 × 1892 wide-screen screenshot

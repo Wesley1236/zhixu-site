@@ -229,14 +229,17 @@ function Dashboard({ knowledge, setPage, startFocus, openReading }) {
         <motion.button className="hub-top-icon" onClick={()=>setPage("goals")} whileTap={{scale:.92}}><CalendarDots size={20}/></motion.button>
         <button className="hub-time light-glass" onClick={()=>setPage("review")}><strong>{new Intl.DateTimeFormat("en-US",{hour:"2-digit",minute:"2-digit",hour12:true}).format(new Date())}</strong><small>{new Intl.DateTimeFormat("en-US",{month:"short",day:"numeric",year:"numeric"}).format(new Date())}</small></button>
       </header>
-      <div className="hub-greeting"><span><Sparkle size={40} weight="thin"/></span><div><h1>Good Morning, Wesley</h1><p>Stay curious. Keep growing.</p></div><blockquote><b>“</b>The best way to predict the future<br/>is to create it.</blockquote></div>
+      <div className="hub-greeting"><span><Sparkle size={40} weight="thin"/></span><div><h1>Good Morning, Wesley</h1><p>Stay curious. Keep growing.</p></div><blockquote><b>“</b>The best way to predict<br/>the future is to create it.<cite>— Peter Drucker</cite></blockquote></div>
       <motion.button className="focus-glass light-glass" onClick={startFocus} whileHover={{y:-4}} whileTap={{scale:.98}} transition={spring}>
         <span className="hub-card-title">Daily Focus <span>•••</span></span><div className="focus-content"><span className="focus-ring"><b>68%</b><small>Progress</small></span><ul><li>EHEDG Training <CheckCircle size={14} weight="fill"/></li><li>Auto SC Project <CircleNotch size={14}/></li><li>Handbook Update <CircleNotch size={14}/></li><li>Hygienic Welding <CircleNotch size={14}/></li></ul></div>
       </motion.button>
       <div className="quick-glass light-glass"><span className="hub-card-title">Quick Access <button onClick={()=>setPage("library")}><Plus size={15}/></button></span><div>{[[ShieldCheck,"Standards"],[Books,"Trainings"],[FileText,"Templates"],[BookmarkSimple,"References"]].map(([Icon,label],index)=><motion.button key={label} onClick={()=>go(index===1?"reading":"library")} whileHover={{y:-3}} whileTap={{scale:.94}} transition={spring}><Icon size={21}/><small>{label}</small></motion.button>)}</div></div>
       <div className="hub-center">
-        <motion.img className="ai-hologram ai-hologram-main" src={`${import.meta.env.BASE_URL}ai-hologram-center.png`} alt="AI knowledge hub" animate={{y:[0,-3,0]}} transition={{duration:5,repeat:Infinity,ease:"easeInOut"}}/>
-        <img className="ai-hologram ai-hologram-base" src={`${import.meta.env.BASE_URL}ai-hologram-center.png`} alt="" aria-hidden="true"/>
+        <motion.button className="k-core-button" onClick={()=>setPage("ai")} aria-label="Open K knowledge core" whileHover={{scale:1.045}} whileTap={{scale:.96}} transition={spring}>
+          <span className="k-core-glow" aria-hidden="true"/>
+          <img className="k-crystal-shell" src={`${import.meta.env.BASE_URL}k-crystal-core-v9.png`} alt="" aria-hidden="true"/>
+          <strong>K</strong><small>KNOWLEDGE CORE</small>
+        </motion.button>
         {modules.map(([Icon,label,target],index)=><motion.button key={label} className={`hub-module module-${index} light-glass`} onClick={()=>go(target)} whileHover={{y:-6,scale:1.025}} whileTap={{scale:.95}} transition={spring}><Icon size={index===0?31:28} weight="duotone"/><strong>{label}</strong></motion.button>)}
       </div>
       <motion.button className="stats-glass light-glass" onClick={()=>setPage("library")} whileHover={{y:-3}} whileTap={{scale:.98}} transition={spring}><span className="hub-card-title">Knowledge Stats <span>•••</span></span><div><span><b>326</b><small>Documents</small></span><span><b>48</b><small>Folders</small></span><span><b>12.4 <em>GB</em></b><small>Storage Used</small></span></div><span className="stats-bars">{[24,43,39,58,77,61,82].map((v,i)=><i key={i} style={{height:`${v}%`}}/>)}</span><small className="stats-days">Mon　 Tue　 Wed　 Thu　 Fri　 Sat　 Sun</small></motion.button>
