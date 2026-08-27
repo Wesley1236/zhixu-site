@@ -5,17 +5,19 @@ import {
   BookmarkSimple, Brain, CalendarDots, CaretDown, CaretRight, ChatCircle, Check,
   CheckCircle, CircleNotch, Clock, Code, Database, File, FileAudio, FileDoc,
   FileImage, FilePdf, FileText, FileVideo, FolderOpen, FolderSimple, Funnel,
-  Heart, House, Lightning, ListBullets, MagnifyingGlass, NotePencil,
+  Heart, House, Lightning, ListBullets, MagnifyingGlass, Microphone, NotePencil,
   PaperPlaneTilt, PencilSimple, Plus, PuzzlePiece, Robot, ShieldCheck,
   SlidersHorizontal, Sparkle, SquaresFour, Star, StarFour, Target, Timer, Trash,
   TrayArrowDown, TrendUp, UploadSimple, X,
 } from "@phosphor-icons/react";
 import { growthDomains, seedActions, seedKnowledge, spaces } from "./data.js";
+import { ExpressionTraining } from "./ExpressionTraining.jsx";
 
 const navItems = [
   { id: "dashboard", label: "总览", icon: House },
   { id: "library", label: "知识库", icon: Books },
   { id: "ai", label: "AI 智识", icon: Sparkle },
+  { id: "expression", label: "表达训练", icon: Microphone },
   { id: "goals", label: "目标与项目", icon: Target },
   { id: "strategy", label: "成长战略", icon: TrendUp },
   { id: "review", label: "复盘", icon: ArrowCounterClockwise },
@@ -39,6 +41,7 @@ const pageCopy = {
   dashboard: ["晚上好，Wesley", "今天最值得推进什么？"],
   library: ["知识库", "把收藏变成可调用、可复用的成长资产。"],
   ai: ["AI 智识", "从你的知识出发，回答、引用，再转化为行动。"],
+  expression: ["表达训练", "每天开口一小段，把想法说得更清楚。"],
   goals: ["目标与项目", "让每个目标都连接到清晰行动与成长证据。"],
   strategy: ["成长战略", "专业、技术、表达、输出与生活共同向前。"],
   review: ["每周复盘", "看见变化，修正方向，把经历沉淀成证据。"],
@@ -209,10 +212,11 @@ function SpatialDock({ page, setPage, openUpload }) {
 const readingSteps = ["5 分钟扫读结构与小标题","15 分钟标记论点、案例与反例","5 分钟写下 1 条可执行洞见"];
 
 function Dashboard({ knowledge, setPage, startFocus, openReading }) {
+  const reduced = useReducedMotion();
   const activeKnowledge = knowledge.filter((item) => !item.deleted);
   const [hubSearch,setHubSearch] = useState("");
   const spring = { type:"spring",stiffness:360,damping:31 };
-  const sideNav = [[House,"Home","dashboard"],[Books,"Knowledge Base","library"],[Sparkle,"AI Assistant","ai"],[FolderSimple,"Projects","goals"],[NotePencil,"Notes","reading"],[BookmarkSimple,"Bookmarks","library"],[ArrowCounterClockwise,"Timeline","review"],[SlidersHorizontal,"Settings","strategy"]];
+  const sideNav = [[House,"Home","dashboard"],[Books,"Knowledge Base","library"],[Sparkle,"AI Assistant","ai"],[Microphone,"表达训练 · Speaking","expression"],[FolderSimple,"Projects","goals"],[NotePencil,"Notes","reading"],[BookmarkSimple,"Bookmarks","library"],[ArrowCounterClockwise,"Timeline","review"],[SlidersHorizontal,"Settings","strategy"]];
   const modules = [[Books,"Knowledge Base","library"],[ChatCircle,"AI Assistant","ai"],[FolderSimple,"Projects","goals"],[NotePencil,"Notes","reading"],[UploadSimple,"Upload","upload"],[Clock,"Timeline","review"]];
   const recent = [[FilePdf,"EHEDG Guideline 44_2024.pdf","2h ago"],[FileDoc,"Hygienic Design Handbook.docx","5h ago"],[FileDoc,"Auto SC Layout Revision.pptx","Yesterday"],[FileText,"Welding Training Notes.md","2d ago"]];
   const go = (target) => target === "reading" ? openReading() : target === "upload" ? document.querySelector(".dock-capture")?.click() : setPage(target);
@@ -235,13 +239,12 @@ function Dashboard({ knowledge, setPage, startFocus, openReading }) {
       </motion.button>
       <div className="quick-glass light-glass"><span className="hub-card-title">Quick Access <button onClick={()=>setPage("library")}><Plus size={15}/></button></span><div>{[[ShieldCheck,"Standards"],[Books,"Trainings"],[FileText,"Templates"],[BookmarkSimple,"References"]].map(([Icon,label],index)=><motion.button key={label} onClick={()=>go(index===1?"reading":"library")} whileHover={{y:-3}} whileTap={{scale:.94}} transition={spring}><Icon size={21}/><small>{label}</small></motion.button>)}</div></div>
       <div className="hub-center">
-        <motion.button className="k-core-button" onClick={()=>setPage("ai")} aria-label="Open K knowledge core" whileHover={{scale:1.045}} whileTap={{scale:.96}} transition={spring}>
-          <span className="k-core-glow" aria-hidden="true"/>
-          <img className="k-crystal-shell" src={`${import.meta.env.BASE_URL}k-crystal-core-v9.png`} alt="" aria-hidden="true"/>
-          <strong>K</strong><small>KNOWLEDGE CORE</small>
+        <motion.button className="k-core-button" onClick={()=>setPage("ai")} aria-label="Open K knowledge core" whileHover={reduced?undefined:{scale:1.045}} whileTap={reduced?undefined:{scale:.96}} transition={spring}>
+          <img className="k-core-unified" src={`${import.meta.env.BASE_URL}k-core-unified-v10.png`} alt="" aria-hidden="true"/>
         </motion.button>
         {modules.map(([Icon,label,target],index)=><motion.button key={label} className={`hub-module module-${index} light-glass`} style={(index===0||index===4)?{x:"-50%"}:undefined} onClick={()=>go(target)} whileHover={{y:-6,scale:1.025}} whileTap={{scale:.95}} transition={spring}><Icon size={index===0?31:28} weight="duotone"/><strong>{label}</strong></motion.button>)}
       </div>
+      <motion.button className="speaking-glass light-glass" onClick={()=>setPage("expression")} whileHover={{y:-3}} whileTap={{scale:.98}} transition={spring}><Microphone size={26} weight="duotone"/><span><strong>今日表达训练</strong><small>中文 / English · 每次 10 分钟</small></span><ArrowRight size={18}/></motion.button>
       <motion.button className="stats-glass light-glass" onClick={()=>setPage("library")} whileHover={{y:-3}} whileTap={{scale:.98}} transition={spring}><span className="hub-card-title">Knowledge Stats <span>•••</span></span><div><span><b>326</b><small>Documents</small></span><span><b>48</b><small>Folders</small></span><span><b>12.4 <em>GB</em></b><small>Storage Used</small></span></div><span className="stats-bars">{[24,43,39,58,77,61,82].map((v,i)=><i key={i} style={{height:`${v}%`}}/>)}</span><small className="stats-days">Mon　 Tue　 Wed　 Thu　 Fri　 Sat　 Sun</small></motion.button>
       <div className="activity-glass light-glass"><span className="hub-card-title">Recent Activity <button onClick={()=>setPage("library")}>View all</button></span>{recent.map(([Icon,title,time])=><motion.button key={title} onClick={()=>setPage("library")} whileHover={{x:3}} whileTap={{scale:.98}} transition={spring}><Icon size={18} weight="duotone"/><strong>{title}</strong><small>{time}</small></motion.button>)}</div>
       <form className="hub-ask light-glass" onSubmit={(e)=>{e.preventDefault();setPage("ai")}}><Sparkle size={21} weight="fill"/><input value={hubSearch} onChange={(e)=>setHubSearch(e.target.value)} placeholder="Ask AI anything about your knowledge..."/><button aria-label="Ask AI"><ArrowRight size={19}/></button></form>
@@ -339,5 +342,5 @@ export function App() {
   const notify = (message) => { setToast(message); window.clearTimeout(window.__zhixuToast); window.__zhixuToast = window.setTimeout(() => setToast(""),2600); };
   useEffect(() => { const onMove = (event) => { if (reduced) return; setPointer({ x:(event.clientX/window.innerWidth-.5)*-12,y:(event.clientY/window.innerHeight-.5)*-8 }); }; window.addEventListener("pointermove",onMove,{ passive:true }); return () => window.removeEventListener("pointermove",onMove); },[reduced]);
   const convertAnswer = () => { if (!actions.some((item) => item.title.includes("检索模块"))) setActions((items) => [seedActions[0],...items]); notify("已转为今日行动"); };
-  return <div className={cx("app-shell",`theme-${theme}`,page === "dashboard" && "is-command-home")}><motion.img className="ambient-background" src={`${import.meta.env.BASE_URL}${page === "dashboard" ? "ocean-cosmos-command-bg.png" : "aurora-knowledge-field.png"}`} alt="" aria-hidden="true" animate={{ x:pointer.x,y:pointer.y,scale:1.035 }} transition={{ type:"spring",stiffness:35,damping:30 }} /><div className="ambient-scrim" /><SpatialDock page={page} setPage={setPage} openUpload={() => setUploadOpen(true)}/>{page !== "dashboard" && <Sidebar page={page} setPage={setPage} theme={theme} setTheme={setTheme} />}<main className="app-main">{page !== "dashboard" && <TopBar page={page} setPage={setPage} openUpload={() => setUploadOpen(true)} startFocus={() => setFocusOpen(true)} />}<AnimatePresence mode="wait"><motion.div className="page-stage" key={page} initial={{ opacity:0,y:16,filter:"blur(10px)" }} animate={{ opacity:1,y:0,filter:"blur(0px)" }} exit={{ opacity:0,y:-10,filter:"blur(8px)" }} transition={{ duration:reduced ? 0 : .38,ease:[.22,1,.36,1] }}>{page === "dashboard" && <Dashboard knowledge={knowledge} setPage={setPage} startFocus={() => setFocusOpen(true)} openReading={() => setReadingOpen(true)} readingState={readingState}/>} {page === "library" && <LibraryPage knowledge={knowledge} setKnowledge={setKnowledge} openUpload={() => setUploadOpen(true)} notify={notify} />}{page === "ai" && <AIPage knowledge={knowledge} actions={actions} setActions={setActions} notify={notify} />}{page === "goals" && <GoalsPage actions={actions} setActions={setActions} notify={notify} />}{page === "strategy" && <StrategyPage />}{page === "review" && <ReviewPage actions={actions} knowledge={knowledge} />}</motion.div></AnimatePresence></main><MobileNav page={page} setPage={setPage} /><AnimatePresence>{uploadOpen && <UploadSheet onClose={() => setUploadOpen(false)} onImport={(items) => { setKnowledge((current) => [...items,...current]);setPage("library"); }} notify={notify} />}</AnimatePresence><AnimatePresence>{focusOpen && <FocusOverlay onClose={() => setFocusOpen(false)} actions={actions} setActions={setActions} notify={notify} />}</AnimatePresence><AnimatePresence>{readingOpen && <ReadingOverlay state={readingState} setState={setReadingState} onClose={() => setReadingOpen(false)} notify={notify}/>}</AnimatePresence><AnimatePresence>{toast && <Toast message={toast} />}</AnimatePresence></div>;
+  return <div className={cx("app-shell",`theme-${theme}`,page === "dashboard" && "is-command-home")}><motion.img className="ambient-background" src={`${import.meta.env.BASE_URL}${["dashboard","expression"].includes(page) ? "ocean-cosmos-command-bg.png" : "aurora-knowledge-field.png"}`} alt="" aria-hidden="true" animate={{ x:pointer.x,y:pointer.y,scale:1.035 }} transition={{ type:"spring",stiffness:35,damping:30 }} /><div className="ambient-scrim" /><SpatialDock page={page} setPage={setPage} openUpload={() => setUploadOpen(true)}/>{page !== "dashboard" && <Sidebar page={page} setPage={setPage} theme={theme} setTheme={setTheme} />}<main className="app-main">{page !== "dashboard" && <TopBar page={page} setPage={setPage} openUpload={() => setUploadOpen(true)} startFocus={() => setFocusOpen(true)} />}<AnimatePresence mode="wait"><motion.div className="page-stage" key={page} initial={{ opacity:0,y:16,filter:"blur(10px)" }} animate={{ opacity:1,y:0,filter:"blur(0px)" }} exit={{ opacity:0,y:-10,filter:"blur(8px)" }} transition={{ duration:reduced ? 0 : .38,ease:[.22,1,.36,1] }}>{page === "dashboard" && <Dashboard knowledge={knowledge} setPage={setPage} startFocus={() => setFocusOpen(true)} openReading={() => setReadingOpen(true)} readingState={readingState}/>} {page === "library" && <LibraryPage knowledge={knowledge} setKnowledge={setKnowledge} openUpload={() => setUploadOpen(true)} notify={notify} />}{page === "ai" && <AIPage knowledge={knowledge} actions={actions} setActions={setActions} notify={notify} />}{page === "expression" && <ExpressionTraining />}{page === "goals" && <GoalsPage actions={actions} setActions={setActions} notify={notify} />}{page === "strategy" && <StrategyPage />}{page === "review" && <ReviewPage actions={actions} knowledge={knowledge} />}</motion.div></AnimatePresence></main><MobileNav page={page} setPage={setPage} /><AnimatePresence>{uploadOpen && <UploadSheet onClose={() => setUploadOpen(false)} onImport={(items) => { setKnowledge((current) => [...items,...current]);setPage("library"); }} notify={notify} />}</AnimatePresence><AnimatePresence>{focusOpen && <FocusOverlay onClose={() => setFocusOpen(false)} actions={actions} setActions={setActions} notify={notify} />}</AnimatePresence><AnimatePresence>{readingOpen && <ReadingOverlay state={readingState} setState={setReadingState} onClose={() => setReadingOpen(false)} notify={notify}/>}</AnimatePresence><AnimatePresence>{toast && <Toast message={toast} />}</AnimatePresence></div>;
 }

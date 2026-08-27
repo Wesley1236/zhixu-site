@@ -1,0 +1,53 @@
+/* V10: one integrated knowledge emblem and a calm, readable voice studio. */
+.strict-reference .speaking-glass{position:absolute;left:45px;top:735px;width:270px;min-height:82px;display:flex;align-items:center;gap:12px;padding:17px;border-radius:20px;text-align:left;color:#23436d}
+.speaking-glass>span{flex:1}.speaking-glass strong,.speaking-glass small{display:block}.speaking-glass strong{font-size:16px}.speaking-glass small{font-size:10px;margin-top:6px;color:#405976}
+.expression-training{--studio-ink:#163451;--studio-muted:#415d75;--studio-blue:#2866d6;max-width:1320px;margin:0 auto 100px;color:var(--studio-ink);font-size:16px;line-height:1.7}
+.expression-training *{box-sizing:border-box}
+.expression-training button,.expression-training input,.expression-training select,.expression-training textarea{font:inherit}
+.expression-training button,.expression-training a{touch-action:manipulation}
+.expression-training button:focus-visible,.expression-training a:focus-visible,.expression-training summary:focus-visible,.expression-training select:focus-visible,.expression-training textarea:focus-visible{outline:3px solid #296de3;outline-offset:4px}
+.expression-training button:disabled{opacity:.5;cursor:not-allowed}
+.expression-glass{border:1px solid rgba(255,255,255,.84);border-radius:26px;background:linear-gradient(135deg,rgba(248,253,255,.82),rgba(233,242,252,.7));box-shadow:inset 0 1px 0 #fff,0 14px 45px #24466e12;backdrop-filter:blur(22px) saturate(120%);-webkit-backdrop-filter:blur(22px) saturate(120%);padding:28px}
+.expression-training h2,.expression-training h3,.expression-training h4,.expression-training p{margin:0}
+.expression-training h2{font-size:clamp(27px,2.5vw,38px);line-height:1.35;letter-spacing:-.025em;margin:12px 0}
+.expression-training h3{font-size:24px;line-height:1.4;margin:8px 0 12px}
+.expression-training p{color:var(--studio-muted)}
+.expression-eyebrow{display:flex;gap:8px;align-items:center;font-size:11px;letter-spacing:.12em;font-weight:700;color:#39699a}
+.expression-hero{display:flex;align-items:center;justify-content:space-between;gap:28px}
+.practice-timer{display:flex;align-items:center;gap:12px;flex-shrink:0;position:relative}
+.practice-timer small,.practice-timer strong{display:block}.practice-timer small{font-size:11px;color:var(--studio-muted)}.practice-timer strong{font-size:34px;line-height:1.2;font-variant-numeric:tabular-nums}
+.app-shell .practice-timer button{width:42px;height:42px;display:grid;place-items:center;background:#ffffff90;border:1px solid #fff;border-radius:50%;color:var(--studio-blue)}
+.timer-status{position:absolute;top:100%;right:0;font-size:12px;white-space:nowrap}
+.expression-controls{display:flex;align-items:center;flex-wrap:wrap;gap:16px;margin:24px 0}
+.expression-notice:empty{display:none}.expression-training .expression-notice:not(:empty){position:sticky;top:16px;z-index:10;padding:12px 18px;margin:0 0 20px;background:#f3f9fff0;border:1px solid #c1d5ed;border-radius:14px;color:#235da8;font-size:14px;box-shadow:0 8px 25px #24466e12}
+.language-switch{display:flex;padding:5px;background:#edf5fcaa;border:1px solid #fff;border-radius:18px;gap:5px}
+.app-shell .language-switch button{display:flex;align-items:center;gap:10px;padding:10px 17px;border-radius:13px;color:#34536f;background:transparent;border:0;transition:background .2s,box-shadow .2s}
+.app-shell .language-switch button[aria-pressed="true"]{background:#ffffffe8;color:#205fbe;box-shadow:0 3px 10px #2e5a8420}
+.language-switch button span{font-size:12px;font-weight:700;padding:2px 6px;background:#3673d312;border-radius:6px}
+.expression-controls>label{margin-left:auto;display:flex;align-items:center;gap:10px;font-size:13px}
+.app-shell .expression-training select{padding:10px 12px;border:1px solid #c3d3e4;border-radius:12px;background:#f7fbffce;color:var(--studio-ink);max-width:100%}
+.app-shell .expression-training .expression-quiet{display:flex;align-items:center;justify-content:center;gap:7px;border:1px solid #bacde1;border-radius:12px;padding:10px 14px;background:#f6fbffb5;color:#24578a;font-size:13px}
+.expression-grid{display:grid;grid-template-columns:minmax(0,1fr) 310px;gap:24px;align-items:start}
+.expression-primary,.expression-secondary{display:grid;gap:24px;min-width:0}
+.lesson-topline{display:flex;flex-wrap:wrap;justify-content:space-between;gap:10px;font-size:12px;letter-spacing:.05em;color:#3c6797;margin-bottom:18px}
+.lesson-state{display:flex;align-items:center;gap:5px;color:#276d66}
+.daily-lesson h3{font-size:30px}.expression-training .lesson-task{font-size:18px;line-height:1.75}
+.lesson-focus{display:flex;gap:40px;margin:22px 0;padding:18px 0;border-top:1px solid #739dc130;border-bottom:1px solid #739dc130}
+.lesson-focus span{font-size:12px;color:#486781}.lesson-focus strong{display:block;color:#1c3f62;font-size:16px;margin-top:5px}
+.lesson-outline{padding:18px 20px;background:#e3effc75;border:1px solid #fff;border-radius:16px}.lesson-outline span{display:block;font-size:12px;color:#4a6a89;margin-bottom:5px}.lesson-outline strong{font-size:17px;font-weight:500}
+.daily-lesson blockquote{margin:18px 0 25px;padding:0 0 0 17px;border-left:3px solid #8eb4ee;color:#2e5c93;font-size:17px}.daily-lesson blockquote small{display:block;font-size:12px;color:#486781;margin-bottom:5px}
+.practice-stages{display:grid;gap:17px}.practice-stages>div{display:flex;align-items:flex-start;gap:13px}.practice-stages i{display:grid;place-items:center;width:30px;height:30px;border-radius:10px;background:#dae8fb;color:#3866a0;font-size:11px;font-style:normal;flex-shrink:0}.practice-stages>div>span{flex:1}.practice-stages strong{display:flex;justify-content:space-between;align-items:center;gap:12px;font-size:15px;font-weight:600}.practice-stages strong small{font-size:12px;color:#4a6987;font-weight:400}.practice-stages p{font-size:13px;margin-top:3px}
+.voice-bridge ol{padding-left:22px;color:var(--studio-muted);font-size:14px;margin:17px 0}.voice-bridge li+li{margin-top:8px}.expression-actions{display:flex;flex-wrap:wrap;align-items:center;gap:13px;margin-top:20px}
+.app-shell .expression-training .expression-primary-button{display:inline-flex;align-items:center;justify-content:center;gap:9px;background:#2969d7;color:#fff;border:1px solid #3472dd;border-radius:13px;padding:12px 17px;font-size:14px;box-shadow:0 5px 14px #2969d729;transition:background .2s,box-shadow .2s}
+.app-shell .expression-primary-button:hover{background:#2059bc;box-shadow:0 7px 20px #2969d736}
+.expression-actions a{display:flex;align-items:center;gap:8px;padding:10px 0;font-size:14px;color:#235da8;text-decoration:none}
+.voice-bridge details{margin-top:20px;border-top:1px solid #b6cde08c;padding-top:16px}.voice-bridge summary{cursor:pointer;font-size:14px;color:#345c88}.voice-doc-link{display:inline-block;margin-top:14px;font-size:12px;color:#38608c}
+.app-shell .expression-training textarea{display:block;resize:vertical;width:100%;min-height:110px;padding:14px 16px;margin-top:8px;background:#ffffffa8;color:#203e5c;border:1px solid #b7cbdf;border-radius:13px;line-height:1.7;font-size:15px}.expression-training textarea::placeholder{color:#647e96;opacity:1}.voice-bridge textarea{min-height:270px!important;font-size:13px!important}
+.practice-journal>label{display:block;font-size:14px;font-weight:600;margin-top:20px}.practice-journal>p{font-size:14px}.journal-save{font-size:12px;color:#326f68}.expression-feedback{margin-top:15px!important;min-height:1.7em;color:#235da8!important}.expression-warning{margin-bottom:20px!important;background:#fff4d9;border:1px solid #dba851;border-radius:12px;padding:14px;color:#775324!important}
+.course-progress h3{font-size:21px}.course-progress>p{font-size:13px}.course-count{display:flex;align-items:center;gap:15px;margin:24px 0 12px}.course-count>strong{font-size:40px;line-height:1.2;color:#326dc8}.course-count small{font-size:16px;margin-left:5px;color:#58738d}.course-count>span{font-size:12px;color:#486781}.course-progress progress{width:100%;height:7px;border:0;border-radius:5px;accent-color:#5187d8;background:#d9e6f5}.course-progress progress::-webkit-progress-bar{background:#d9e6f5;border-radius:5px}.course-progress progress::-webkit-progress-value{background:#5187d8;border-radius:5px}.course-progress>.expression-quiet{margin:16px 0 12px;width:100%}.course-start{font-size:11px!important;line-height:1.8}
+.course-week{margin-top:22px}.course-week h4{font-size:13px;font-weight:500;margin-bottom:10px}.course-week>div{display:grid;grid-template-columns:repeat(7,minmax(0,1fr));gap:4px}.app-shell .course-week button{position:relative;padding:0;min-height:34px;font-size:12px;background:#f7fbffb0;border:1px solid #d5e1ed;border-radius:9px;color:#43617e}.app-shell .course-week button.completed{background:#dcefe9;color:#237668}.app-shell .course-week button.selected{background:#3374d8;color:#fff;border-color:#3374d8}.course-week button svg{position:absolute;right:1px;bottom:1px}
+.expression-reminder>svg{color:#6a94ce}.expression-reminder h3{font-size:21px;margin-top:13px}.expression-reminder p{font-size:14px}.expression-reminder hr{border:0;border-top:1px solid #b6cde08c;margin:22px 0}.expression-reminder>small{font-size:12px;line-height:1.9;color:#4a657e}
+@media(max-width:1150px){.expression-grid{grid-template-columns:minmax(0,1fr) 270px;gap:18px}.expression-glass{padding:22px}.expression-hero{align-items:flex-start;flex-direction:column}.expression-controls>label{margin-left:0}}
+@media(max-width:900px){.strict-reference .speaking-glass{position:relative;inset:auto;width:100%;min-height:84px}.expression-grid{grid-template-columns:1fr}.expression-secondary{grid-template-columns:1fr 1fr}.expression-training{margin-bottom:120px}.expression-hero{flex-direction:row;align-items:center}.expression-training h2{font-size:28px}}
+@media(max-width:620px){.expression-glass{padding:21px 18px;border-radius:21px}.expression-hero{flex-direction:column;align-items:flex-start;gap:20px}.expression-secondary{grid-template-columns:1fr}.expression-controls{gap:12px}.language-switch{width:100%}.app-shell .language-switch button{flex:1;justify-content:center;padding:10px;font-size:14px}.expression-controls>label{flex:1;flex-wrap:wrap}.expression-controls>label select{font-size:13px}.daily-lesson h3{font-size:25px}.expression-training .lesson-task{font-size:16px}.lesson-focus{gap:26px}.expression-actions{align-items:stretch;flex-direction:column}.expression-actions a{justify-content:center}.course-week button{min-height:40px!important}.expression-training h2{font-size:26px}}
+@media(prefers-reduced-motion:reduce){.expression-training *{scroll-behavior:auto!important;transition:none!important}.k-core-unified{animation:none!important}}

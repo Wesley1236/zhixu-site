@@ -32,6 +32,10 @@ jobs:
         working-directory: prototype
         run: npm ci
 
+      - name: Test expression training
+        working-directory: prototype
+        run: npm run test:expression
+
       - name: Build
         working-directory: prototype
         run: npm run build
