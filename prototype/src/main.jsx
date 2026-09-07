@@ -6,6 +6,7 @@ import "./home.css";
 import "./home-v4.css";
 import "./hub-light.css";
 import "./expression.css";
+import "./studio.css";
 
 createRoot(document.getElementById("root")).render(
   <React.StrictMode>

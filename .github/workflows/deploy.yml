@@ -34,7 +34,7 @@ jobs:
 
       - name: Test expression training
         working-directory: prototype
-        run: npm run test:expression
+        run: node --test tests/*.test.mjs
 
       - name: Build
         working-directory: prototype

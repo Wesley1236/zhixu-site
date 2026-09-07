@@ -1,5 +1,9 @@
 # Prototype Instructions
 
+## Current V11 decision (supersedes previous homepage geometry)
+
+The user now prioritizes a usable, content-first mature learning app over the strict orbit mockup. Use a centered responsive learning workbench, readable rounded typography, a light lake background and restrained translucent panels. Prioritize daily reading, English, vocabulary, notes and real progress. Keep the unified slowly rotating K as a secondary knowledge entry. Do not uniformly scale a fixed canvas. Preserve existing knowledge and expression records. Original learning content must be identified; external source links must not imply embedded voice or automatic coaching. Deploy through GitHub Pages.
+
 Run the local server yourself and open the preview in the browser available to this environment. Do not give the user server-start instructions when you can run it.
 
 Before making substantial visual changes, use the Product Design plugin's `get-context` skill when the visual source is unclear or no longer matches the current goal. When the user gives durable prototype-specific design feedback, preferences, or decisions, record them in `AGENTS.md`.
