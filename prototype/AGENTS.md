@@ -1,6 +1,10 @@
 # Prototype Instructions
 
-## Current V11 decision (supersedes previous homepage geometry)
+## Current V12 decision (supersedes V11 homepage geometry)
+
+Restore the supplied airy lake-office orbit homepage: left navigation, daily focus, central unified K with six functional modules, right real statistics and recent notes, bottom question entry. Keep responsive grids (no whole-canvas scaling) and all V11 detailed learning pages. Add original Mao study guides for volumes 1–5 and private local text import; never claim complete text coverage or publish unlicensed full books. Distinguish 1977 volume V and original modern applications from historical source claims.
+
+## Previous V11 decision (detail pages remain applicable)
 
 The user now prioritizes a usable, content-first mature learning app over the strict orbit mockup. Use a centered responsive learning workbench, readable rounded typography, a light lake background and restrained translucent panels. Prioritize daily reading, English, vocabulary, notes and real progress. Keep the unified slowly rotating K as a secondary knowledge entry. Do not uniformly scale a fixed canvas. Preserve existing knowledge and expression records. Original learning content must be identified; external source links must not imply embedded voice or automatic coaching. Deploy through GitHub Pages.
 

@@ -1,9 +1,13 @@
 import { useEffect, useRef, useState } from 'react';
+import MaoStudy from './MaoStudy';
+import OrbitHome from './OrbitHome';
+import './orbit-v12.css';
 import { motion, useReducedMotion } from 'framer-motion';
 import { ArrowRight, ArrowUpRight, BookOpenText, Books, Check, CheckCircle, Clock, DownloadSimple, Headphones, House, MagnifyingGlass, Microphone, NotePencil, Plus, Sparkle, Target, TrendUp, SpeakerHigh, ArrowLeft, X } from '@phosphor-icons/react';
 import { readings, talks, words, wordReferences, bookReferences, dailyReading, dailyTalk, localDay, dueDate } from './learning-content.js';
 
 const nav = [['dashboard','今日学习',House],['english','英语学习',Headphones],['reading','每日精读',BookOpenText],['vocabulary','词汇复习',Books],['expression','表达训练',Microphone],['notes','学习笔记',NotePencil],['library','知识库',Books],['ai','知识问答',Sparkle],['goals','我的行动',Target],['review','成长回顾',TrendUp]];
+nav.push(['mao','毛选研读',BookOpenText]);
 const empty={notes:{},words:{},events:[],lastReading:null,lastTalk:null,weeklyReflection:''};
 function useLearning(){
  const [initial]=useState(()=>{try{const raw=localStorage.getItem('zhixu-learning-v11');if(!raw)return {data:empty};const value=JSON.parse(raw);if(!value||!value.notes||!value.words||!Array.isArray(value.events))throw Error();return {data:{...empty,...value}};}catch{return {data:empty,error:'学习记录暂时无法读取，本次编辑可导出备份，原记录不会被覆盖。'};}});
@@ -39,7 +43,7 @@ export function LearningStudio({page,setPage,children,knowledge,setKnowledge,act
   <main className="studio-main"><header className="studio-topbar"><div className="studio-breadcrumb">我的空间 <span>/</span> <strong>{title}</strong></div><div className="studio-search"><MagnifyingGlass size={18}/><input ref={search} value={query} onChange={e=>setQuery(e.target.value)} placeholder="搜索内容、课程与模块" aria-label="搜索内容、课程与模块"/><kbd>⌘ K</kbd>{query&&<button aria-label="清空搜索" onClick={()=>setQuery('')}><X size={16}/></button>}{query&&<div className="studio-search-results">{results.length?results.map(item=><button key={`${item.type}-${item.id}`} onClick={item.run}><span>{item.type}</span>{item.title}<ArrowRight size={15}/></button>):<p>没有找到，试试“专注”“演讲”或“habit”。</p>}</div>}</div><button className="studio-capture" onClick={openUpload}><Plus size={18}/><span>导入知识</span></button></header>
    {error&&<div className="studio-error" role="alert">{error}<button onClick={exportNotes}>导出备份</button></div>}
    <motion.div key={page} className="studio-page" initial={{opacity:0,y:reduced?0:8}} animate={{opacity:1,y:0}} transition={{duration:reduced?0:.22}}>
-    {page==='dashboard'?<Today data={displayData} today={today} openReading={openReading} openTalk={openTalk} go={go}/>:page==='reading'?<ReadingPage {...noteProps} id={readingId} setId={openReading}/>:page==='english'?<EnglishPage {...noteProps} id={talkId} setId={openTalk} go={go}/>:page==='vocabulary'?<Vocabulary data={data} setData={setData} today={today} notify={setNotice}/>:page==='notes'?<Notes data={data} openReading={openReading} openTalk={openTalk} exportNotes={exportNotes} saveKnowledge={saveKnowledge}/>:page==='review'?<ProgressPage data={displayData} setData={setData} today={today}/>:page==='goals'?<ActionPage actions={actions} setActions={setActions}/>:children}
+    {page==='dashboard'?<OrbitHome data={displayData} today={today} openReading={openReading} openTalk={openTalk} go={go} knowledge={knowledge}/>:page==='mao'?<MaoStudy setKnowledge={setKnowledge}/>:page==='reading'?<ReadingPage {...noteProps} id={readingId} setId={openReading}/>:page==='english'?<EnglishPage {...noteProps} id={talkId} setId={openTalk} go={go}/>:page==='vocabulary'?<Vocabulary data={data} setData={setData} today={today} notify={setNotice}/>:page==='notes'?<Notes data={data} openReading={openReading} openTalk={openTalk} exportNotes={exportNotes} saveKnowledge={saveKnowledge}/>:page==='review'?<ProgressPage data={displayData} setData={setData} today={today}/>:page==='goals'?<ActionPage actions={actions} setActions={setActions}/>:children}
    </motion.div><footer className="studio-footer">知序 · 让学习发生，让成长留下来。<span>笔记保存在当前浏览器 · 请定期导出</span></footer>
   </main><nav className="studio-mobile" aria-label="移动导航">{[nav[0],nav[1],nav[2],nav[4],nav[5]].map(([id,label,Icon])=><button key={id} aria-current={page===id?'page':undefined} onClick={()=>go(id)}><Icon size={20}/><span>{label}</span></button>)}</nav>{notice&&<div className="studio-toast" role="status"><CheckCircle size={19}/>{notice}<button onClick={()=>setNotice('')} aria-label="关闭提示"><X size={16}/></button></div>}
  </div>;
