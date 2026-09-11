@@ -1,5 +1,8 @@
 # Prototype Instructions
 
+## V13 current visual decision
+Use supplied juzizhou-sunlight.png background with midnight navy, warm gold and ivory text. Sidebar must have no frosted panel or profile-card backing. Expand fluid desktop width and distribute orbit/focus/stats; preserve mobile reading size. Add persistent Chinese/English interface switching without rewriting original study materials or personal notes. Motion: restrained reveal, parallax, hover elevation, letter greeting and real counters; respect reduced motion. Preserve all prior functionality and private data. GitHub publishing remains authorized.
+
 ## Current V12 decision (supersedes V11 homepage geometry)
 
 Restore the supplied airy lake-office orbit homepage: left navigation, daily focus, central unified K with six functional modules, right real statistics and recent notes, bottom question entry. Keep responsive grids (no whole-canvas scaling) and all V11 detailed learning pages. Add original Mao study guides for volumes 1–5 and private local text import; never claim complete text coverage or publish unlicensed full books. Distinguish 1977 volume V and original modern applications from historical source claims.

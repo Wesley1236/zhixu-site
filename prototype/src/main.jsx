@@ -7,9 +7,12 @@ import "./home-v4.css";
 import "./hub-light.css";
 import "./expression.css";
 import "./studio.css";
+import "./evening-v13.css";
+import {LocaleProvider} from './Locale';
+import AmbientEffects from './AmbientEffects';
 
 createRoot(document.getElementById("root")).render(
   <React.StrictMode>
-    <App />
+    <LocaleProvider><App /><AmbientEffects /></LocaleProvider>
   </React.StrictMode>,
 );

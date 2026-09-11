@@ -1,0 +1,5 @@
+import {useEffect,useRef,useState} from 'react';
+import {useInView,useReducedMotion} from 'framer-motion';
+import {useLocale,translate} from './Locale';
+export function Count({value}){const ref=useRef(null),visible=useInView(ref,{once:true}),reduced=useReducedMotion();const [number,setNumber]=useState(value);useEffect(()=>{if(!visible||reduced){setNumber(value);return}let frame;const start=performance.now();const tick=now=>{const p=Math.min((now-start)/850,1);setNumber(Math.round(value*(1-(1-p)**3)));if(p<1)frame=requestAnimationFrame(tick)};frame=requestAnimationFrame(tick);return()=>cancelAnimationFrame(frame)},[value,visible,reduced]);return <span ref={ref} aria-label={String(value)}><span aria-hidden="true">{number}</span></span>}
+export function Greeting({hour}){const {lang}=useLocale();const text=translate(hour<12?'早上好':hour<18?'下午好':'晚上好',lang)+(lang==='en'?', Wesley':'，Wesley');return <h1 key={lang} aria-label={text}>{[...text].map((c,i)=><span aria-hidden="true" className="title-character" key={i} style={{'--letter':i}}>{c}</span>)}</h1>}
