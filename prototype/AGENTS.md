@@ -1,5 +1,8 @@
 # Prototype Instructions
 
+## V14 current decision (supersedes prior homepage geometry/palette)
+Use the user-supplied juzizhou-study.png and the selected four-card homepage reference: slim open text rail, generous greeting/search, Library/Write/Learn/Progress entry cards. No K orbit. Preserve all existing learning routes under Explore. Use rounded Chinese typography and restrained translucent materials; readable longform surfaces may be more opaque. Books are private in Wesley1236/zhixu-library-private, never in public assets. Credentials must stay in memory. Reading notes use explicit optimistic-concurrency sync with recoverable local drafts. No claim of completed OCR, full-text indexing, AI book analysis, or automatic ChatGPT voice integration. Private collection contains 13 supplied originals; preserve filename/version distinctions.
+
 ## V13 current visual decision
 Use supplied juzizhou-sunlight.png background with midnight navy, warm gold and ivory text. Sidebar must have no frosted panel or profile-card backing. Expand fluid desktop width and distribute orbit/focus/stats; preserve mobile reading size. Add persistent Chinese/English interface switching without rewriting original study materials or personal notes. Motion: restrained reveal, parallax, hover elevation, letter greeting and real counters; respect reduced motion. Preserve all prior functionality and private data. GitHub publishing remains authorized.
 

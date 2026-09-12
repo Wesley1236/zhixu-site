@@ -1,131 +1,27 @@
-# Design QA — 知序 6.0 strict reference build
+# V14 visual QA
 
-- source visual: `design/home-v5-interface-reference.png`
-- implementation: `qa/implementation-v6-desktop.png`
-- mobile: `qa/implementation-v6-mobile.png`
-- same-state comparison: `qa/comparison-v6-desktop.png`
-- source and implementation: 1488 × 1058 px, dashboard state, overlays closed
+Source: C:/Users/Wesle/AppData/Local/Temp/codex-clipboard-90a48c88-846f-4ad4-98d9-98fa56b20dc1.png (1672 × 941).
+Wallpaper: D:/Wallpaper/橘子洲头 书房.png, used as supplied.
+Implementation: http://127.0.0.1:4173/zhixu-site/, in-app browser tab 2. Screenshots are recorded inline in the task tool results; no separate image file was exported.
 
-## Fidelity verification
+Desktop CSS viewport 1672 × 941, mobile 390 × 844. Full desktop captures and source were emitted in the same comparison call twice. States: home (Chinese/English), desktop and mobile bookshelf, mobile Explore, filtered bookshelf. Screenshot density was normalized by the browser display; no whole-canvas CSS scaling.
 
-- The supplied lake-office image remains the exact full-bleed background with the same crop.
-- Sidebar bounds, 215 px width, 24 px top inset, 752 px height, navigation rhythm, active row, and profile row match the reference.
-- Search, utility icons, time card, greeting, quote, Daily Focus, Quick Access, Knowledge Stats, Recent Activity, bottom AI field, and prompt chips match the reference positions and proportions.
-- All six central glass modules match the reference coordinates. The central AI cube, orbit trails, and lower pedestal use a dedicated transparent raster asset; the pedestal was separately composited to match the lower reference position.
-- Typography, pale glass opacity, white specular borders, restrained blue accents, radii, and shadows were tuned from the side-by-side native-size comparison.
+## Comparison and fixes
+- Initial P1: legacy high-specificity light-theme text rules made portal and book labels dark on dark glass. Fixed scoped foreground rules. Post-fix desktop home/book screenshots show warm white text; mobile bookshelf rechecked after the quota reset.
+- P2: search input retained an opaque inset background; now transparent. Portal spacing moved upward to match the reference lower-middle row.
+- Fonts: self-hosted rounded Chinese; Georgia serif first for English headings/body where scoped, per latest rounded/serif request. Deliberate departure from reference sans-serif. Heading hierarchy preserved, long titles wrap on book covers rather than truncate.
+- Layout: narrow open rail, greeting/search and four horizontal portals. Mobile two-column portals/books and persistent bottom navigation. Home scrollWidth 382 versus viewport 390: no horizontal overflow. Detail pages intentionally scroll.
+- Tokens: blue-gray, warm ivory, restrained glass and source landscape. Reading surfaces remain more opaque for legibility. Actual supplied wallpaper, existing logo and Phosphor icons; no replacement decorative K asset.
+- Content: all previous learning routes are reachable under Explore. Books retain original filenames and edition distinctions. Typographic covers are explicitly not original covers. Placeholder entry state clearly requires private connection.
+- Focused inspection: desktop bookshelf labels and search control inspected in full-resolution screenshot; mobile title/tool layout inspected independently. No remaining observed P0/P1/P2 visual finding.
 
-## Interaction and responsive checks
-
-- Dashboard module callbacks remain wired to Knowledge Base, AI Assistant, Projects, Notes/deep reading, Upload, and Timeline.
-- Search, notification, calendar, Daily Focus, Quick Access, statistics, activity rows, profile, AI submit, and prompt chips remain interactive.
-- Desktop measures 1488 × 1058 with no horizontal or vertical overflow.
-- Mobile measures 390 × 844 with 382 px document width, no horizontal overflow, and 32 visible interactive controls.
-- Browser console at the final desktop state: 0 errors and 0 warnings.
-- Production build succeeds.
-
-## Findings
-
-1. P1 — previous version used a different center hierarchy and full-height sidebar. Rebuilt to the reference geometry.
-2. P1 — previous center used a generic growth card. Replaced with a dedicated AI glass cube, orbital glow, and holographic pedestal.
-3. P2 — lower modules and pedestal initially sat too high. Measured and moved them to the reference coordinates.
-4. P2 — quote and Daily Focus contents initially missed their reference positions. Corrected with exact offsets.
-
-No actionable P0, P1, or P2 findings remain.
+## Verification boundaries
+- 17 Node tests passed: prior learning/expression/Mao data, private repository rejection, conflict propagation, base64, PDF validation and ordered chunk assembly.
+- Actual private API verified: repository is private, 13 metadata entries, one complete original PDF downloaded and SHA-256 matched against imported identifier.
+- Browser: home → Library, home → Explore, Chinese/English switch, mobile navigation and title filtering passed. Captured console errors: none.
+- Browser filechooser automation timed out; local file selection and the authenticated reader/sync UI were not end-to-end exercised in this browser. No access token was entered for the user. Multi-device sign-in remains a user configuration step; live upload/note-sync semantics have unit coverage, not a claimed two-device test.
+- Reduced-motion rules present; not manually emulated. Scanned originals have no claimed completed OCR or AI analysis.
 
 final result: passed
 
----
-
-# Design QA — 知序 9.0 rotating K knowledge core
-
-- visual source: `prototype/public/design/home-v9-layout-reference.png`
-- generated center asset: `prototype/public/k-crystal-core-v9.png`
-- tested desktop state: 1680 × 945
-- tested compact desktop state: 1280 × 720
-
-## Visual verification
-
-- Rebalanced the homepage to the selected airy three-column composition with a slim rail, left focus area, central orbit, and right knowledge summary.
-- Replaced the previous AI cube/pedestal with a dedicated transparent faceted crystal asset and a legible HTML K overlay.
-- Reduced glass opacity, blur weight, shadows, and corner radii so the lake-office background remains present without sacrificing dark-navy text contrast.
-- Added the quote author, search keyboard hint, lighter cards, and a tighter bottom AI prompt grouping.
-
-## Interaction, motion, and build checks
-
-- K core rotation is active at 42 seconds per revolution; computed transforms change over time.
-- Clicking the K core opens the functional AI knowledge page, and the dashboard navigation returns correctly.
-- Six surrounding modules, Daily Focus, Quick Access, statistics, recent files, search, and AI prompt remain interactive.
-- `prefers-reduced-motion` disables the continuous core animation.
-- 1680 × 945 and 1280 × 720 layouts fit their viewports without horizontal overflow.
-- Browser console at final tested state: 0 errors and 0 warnings.
-- Production build succeeds.
-
-No actionable P0, P1, or P2 findings remain.
-
-final result: passed
-
----
-
-# Design QA — 知序 7.0 wide-screen layout pass
-
-- issue reference: user-provided 3758 × 1892 wide-screen screenshot
-- implementation: `qa/implementation-v7-ultrawide.png`
-- reference-size implementation: `qa/implementation-v7-reference.png`
-- mobile implementation: `qa/implementation-v7-mobile.png`
-- before/after comparison: `qa/comparison-v7-ultrawide.png`
-
-## Visual verification
-
-- The 1488 × 1058 reference geometry remains intact at its native breakpoint.
-- At 3758 × 1892, the full dashboard scales uniformly to 1.65× and is centered on both axes.
-- Measured horizontal margins are exactly balanced at approximately 651 px per side; vertical margins are approximately 73 px.
-- The previous large one-sided empty region is removed without stretching individual cards or distorting the AI artwork.
-- Key heading, navigation, module labels, profile labels, quote, and AI input copy were increased for clearer reading.
-- The existing lake-office background, restrained pale glass material, module hierarchy, and interaction model remain unchanged.
-
-## Responsive and interaction checks
-
-- Ultra-wide viewport 3758 × 1892: 0 px horizontal overflow and 0 px vertical overflow.
-- Reference viewport 1488 × 1058: exact viewport fit with no overflow.
-- Mobile viewport 390 × 844: document width 382 px and no horizontal overflow.
-- Knowledge Base navigation resolves to the functional knowledge library.
-- Upload opens the classification/upload interaction.
-- Browser console at the final tested state: 0 errors and 0 warnings.
-- Production build succeeds.
-
-No actionable P0, P1, or P2 findings remain.
-
-final result: passed
-
----
-
-# Design QA — 知序 8.0 larger rounded UI pass
-
-- issue reference: user-provided 3758 × 1892 screenshot
-- implementation: `qa/implementation-v8-ultrawide.png`
-- reference-size implementation: `qa/implementation-v8-reference.png`
-- mobile implementation: `qa/implementation-v8-mobile.png`
-- before/after comparison: `qa/comparison-v8-ultrawide.png`
-
-## Visual verification
-
-- The ultrawide reference canvas expands from 1488 to 1680 design pixels and renders at approximately 2966 px wide.
-- Horizontal margins are balanced at approximately 396 px per side, reduced from approximately 651 px in V7.
-- Daily Focus renders at approximately 521 × 441 px and Knowledge Stats at approximately 547 × 441 px in the target viewport.
-- Sidebar, quick access, six orbit modules, AI artwork, right-side cards, search, prompt bar, and chips are visibly larger and more tightly grouped.
-- All product text uses the self-hosted rounded Chinese font; browser font loading checks pass.
-- Knowledge Base remains on one line at the 1488 × 1058 reference viewport after enlarging the module frame.
-
-## Responsive, interaction, and build checks
-
-- Ultra-wide viewport 3758 × 1892: 0 px horizontal and vertical overflow.
-- Reference viewport 1488 × 1058: 0 px horizontal and vertical overflow.
-- Mobile viewport 390 × 844: 382 px document width and no horizontal overflow.
-- Knowledge Base navigation remains functional.
-- Browser console at final state: 0 errors and 0 warnings.
-- Production build succeeds in 35.22 seconds.
-- Font source is the GitHub project `lxgw/975Yuan`; the bundled license is SIL Open Font License 1.1.
-
-No actionable P0, P1, or P2 findings remain.
-
-final result: passed
+Visual acceptance only; the explicit functional test gaps above remain documented.

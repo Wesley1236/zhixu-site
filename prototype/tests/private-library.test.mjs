@@ -1,0 +1,9 @@
+import test from 'node:test';
+import assert from 'node:assert/strict';
+import {createLibraryClient,validRepo,encode64} from '../src/private-library.js';
+test('repository names cannot change API origin',()=>{assert.ok(validRepo('Wesley1236/zhixu-library-private'));for(const name of ['https://evil.test','a/b/c','../a/b','a/b?x'])assert.equal(validRepo(name),false);});
+test('base64 handles Chinese metadata',()=>{const text='毛泽东选集 · 笔记';assert.equal(Buffer.from(encode64(new TextEncoder().encode(text)),'base64').toString(),text);});
+test('public repository rejected',async()=>{const old=global.fetch;global.fetch=async()=>new Response(JSON.stringify({private:false,permissions:{push:true}}));try{await assert.rejects(()=>createLibraryClient('a/b','test').verify(),/Private repository/);}finally{global.fetch=old;}});
+test('remote conflict is surfaced; update includes expected SHA',async()=>{const old=global.fetch;global.fetch=async(url,opts)=>{assert.ok(url.startsWith('https://api.github.com/repos/a/b/'));assert.equal(JSON.parse(opts.body).sha,'original');return new Response('{}',{status:409});};try{await assert.rejects(()=>createLibraryClient('a/b','test').saveNote('book',{notes:'draft'},'original'),/Conflict/);}finally{global.fetch=old;}});
+test('private chunked PDF downloads assemble in order',async()=>{const old=global.fetch;global.fetch=async url=>new Response(url.endsWith('/0.bin')?'%PDF-':'body');try{const blob=await createLibraryClient('a/b','test').download({parts:['files/id/0.bin','files/id/1.bin']});assert.equal(await blob.text(),'%PDF-body');assert.equal(blob.type,'application/pdf');}finally{global.fetch=old;}});
+test('invalid PDF upload rejected before writing',async()=>{await assert.rejects(()=>createLibraryClient('a/b','test').upload(new File(['bad'],'test.pdf')),/有效/);});

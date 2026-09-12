@@ -8,6 +8,7 @@ import "./hub-light.css";
 import "./expression.css";
 import "./studio.css";
 import "./evening-v13.css";
+import "./study-v14.css";
 import {LocaleProvider} from './Locale';
 import AmbientEffects from './AmbientEffects';
 
