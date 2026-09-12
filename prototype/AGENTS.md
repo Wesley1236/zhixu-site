@@ -1,5 +1,8 @@
 # Prototype Instructions
 
+## Authorized device persistence
+User explicitly approved remembering library authorization on each personal device. Opt-in checkbox (selected for this user's requested workflow), localStorage token scoped to a private repo, automatic verification on library entry, and sign out/forget are allowed. Explain same-origin-script/shared-device risks; do not describe this as encrypted storage. Never embed existing CLI credentials in the site. This supersedes prior memory-only requirements.
+
 ## V14 current decision (supersedes prior homepage geometry/palette)
 Use the user-supplied juzizhou-study.png and the selected four-card homepage reference: slim open text rail, generous greeting/search, Library/Write/Learn/Progress entry cards. No K orbit. Preserve all existing learning routes under Explore. Use rounded Chinese typography and restrained translucent materials; readable longform surfaces may be more opaque. Books are private in Wesley1236/zhixu-library-private, never in public assets. Credentials must stay in memory. Reading notes use explicit optimistic-concurrency sync with recoverable local drafts. No claim of completed OCR, full-text indexing, AI book analysis, or automatic ChatGPT voice integration. Private collection contains 13 supplied originals; preserve filename/version distinctions.
 

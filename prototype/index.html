@@ -8,9 +8,14 @@
     <meta name="color-scheme" content="dark" />
     <link rel="icon" type="image/svg+xml" href="%BASE_URL%favicon.svg" />
     <title>知序 · Personal Growth OS</title>
+    <link rel="preload" as="image" href="%BASE_URL%juzizhou-study.png" />
+    <style>body{margin:0;background:#24475e;color:#fff}#boot{position:fixed;inset:0;background:linear-gradient(90deg,#19384e99,#19384e33),url('%BASE_URL%juzizhou-study.png') center/cover;display:grid;place-items:center;font:18px/1.8 system-ui}#boot section{padding:28px;border-radius:20px;background:#19384ed9;max-width:420px;margin:24px}#boot a,#boot button{color:white;background:#547e96;border:1px solid #ffffff60;padding:10px 16px;border-radius:10px;font:inherit}#boot-help{display:none;font-size:14px}body.app-ready #boot{display:none}</style>
   </head>
   <body>
+    <div id="boot" role="status"><section><strong>知序 · 正在打开书房</strong><div id="boot-help"><p>加载比预期慢，可能是网络或缓存问题。请重试；书籍仍保存在私有仓库。</p><button onclick="location.reload()">重新加载</button></div></section></div>
+    <noscript>请启用 JavaScript 后打开知序。</noscript>
     <div id="root"></div>
+    <script>setTimeout(function(){var h=document.getElementById('boot-help');if(h)h.style.display='block'},10000)</script>
     <script type="module" src="/src/main.jsx"></script>
   </body>
 </html>

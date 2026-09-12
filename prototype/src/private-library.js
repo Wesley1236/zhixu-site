@@ -1,11 +1,11 @@
-// Credentials stay in memory. Never ship or persist a GitHub access token.
+// API credentials are supplied at runtime, never shipped in the public bundle.
 export const DEFAULT_REPO='Wesley1236/zhixu-library-private';
 export function validRepo(value){return /^[a-zA-Z0-9_.-]+\/[a-zA-Z0-9_.-]+$/.test(value);}
 export function encode64(bytes){let s='';for(let i=0;i<bytes.length;i+=16384)s+=String.fromCharCode(...bytes.subarray(i,i+16384));return btoa(s);}
 export function createLibraryClient(repo,token){
  if(!validRepo(repo)||!token.trim())throw Error('请填写仓库名称与访问令牌 / Repository and token required');
  const root=`https://api.github.com/repos/${repo}`;
- async function request(path='',options={}){const response=await fetch(root+path,{...options,headers:{Accept:'application/vnd.github+json',Authorization:`Bearer ${token}`,'X-GitHub-Api-Version':'2022-11-28',...options.headers}});if(!response.ok){const err=Error(response.status===409?'远端已更新，请重新连接后再保存；你的本地草稿仍保留。 / Conflict: reconnect before saving.':`GitHub ${response.status}：请检查权限、网络或文件大小。`);err.status=response.status;throw err;}return response;}
+ async function request(path='',options={}){const response=await fetch(root+path,{...options,signal:AbortSignal.timeout(60000),headers:{Accept:'application/vnd.github+json',Authorization:`Bearer ${token}`,'X-GitHub-Api-Version':'2022-11-28',...options.headers}});if(!response.ok){const err=Error(response.status===409?'远端已更新，请重新连接后再保存；你的本地草稿仍保留。 / Conflict: reconnect before saving.':`GitHub ${response.status}：请检查权限、网络或文件大小。`);err.status=response.status;throw err;}return response;}
  const filePath=p=>'/contents/'+p.split('/').map(encodeURIComponent).join('/');
  async function read(path){const r=await request(filePath(path),{headers:{Accept:'application/vnd.github.raw+json'}});return r;}
  async function sha(path){try{return (await (await request(filePath(path))).json()).sha;}catch(e){if(e.status===404)return undefined;throw e;}}
