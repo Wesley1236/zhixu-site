@@ -1,5 +1,8 @@
 # Prototype Instructions
 
+## V15 encrypted reading (latest user decision)
+Only encrypted copies of the 13 supplied books may be published; plaintext originals remain private. User sets a long passphrase via the local-only setup page, never through chat or an agent-entered credential. Click a book to unlock using native Web Crypto; do not persist the passphrase or derived key. Titles/catalog remain public and offline password guessing is possible. Preserve local notes; explicitly disclose that notes are unencrypted and not synced. Use rounded fonts throughout; scanned PDF glyphs are unchanged. Do not claim the whole website is private or encryption is unbreakable.
+
 ## Clear glass and private-site direction
 Align homepage hero/search and portal grid on one left edge. Use transparent, unblurred glass for module controls; retain readable document pages and accessibility contrast overrides. User approved migrating to an authenticated private website, but hosting identity/configuration is not yet provided. Never publish original books or claim the existing GitHub Pages frontend is private.
 

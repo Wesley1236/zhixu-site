@@ -3,7 +3,7 @@ import { useEffect, useRef, useState } from 'react';
 import MaoStudy from './MaoStudy';
 
 import StudyHome from './StudyHome';
-import BookLibrary from './BookLibrary';
+import BookLibrary from './EncryptedLibrary';
 import './orbit-v12.css';
 import { motion, useReducedMotion } from 'framer-motion';
 import { ArrowRight, ArrowUpRight, BookOpenText, Books, Check, CheckCircle, Clock, DownloadSimple, Headphones, House, MagnifyingGlass, Microphone, NotePencil, Plus, Sparkle, Target, TrendUp, SpeakerHigh, ArrowLeft, X } from '@phosphor-icons/react';
