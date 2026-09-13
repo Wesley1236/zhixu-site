@@ -1,0 +1,4 @@
+import test from 'node:test';import assert from 'node:assert/strict';
+import {selectionRect,normalizeNote,exportReading} from '../src/reading-annotations.js';
+test('region coordinates are direction-independent and clamped',()=>{assert.deepEqual(selectionRect({x:.8,y:.6},{x:.2,y:.1}),selectionRect({x:.2,y:.1},{x:.8,y:.6}));assert.deepEqual(selectionRect({x:-1,y:-2},{x:2,y:4}),{x:0,y:0,w:1,h:1});});
+test('old notes and new annotations survive normalization and JSON persistence',()=>{const old=normalizeNote({page:4,notes:'原有笔记'});assert.deepEqual(old.annotations,[]);const v=normalizeNote({...old,annotations:[{id:'x',page:4,type:'highlight',rect:{x:.1,y:.2,w:.3,h:.05},thought:'test'}]});assert.deepEqual(normalizeNote(JSON.parse(JSON.stringify(v))),v);assert.ok(exportReading('Book',v).includes('test'));assert.ok(exportReading('Book',v).includes('原有笔记'));});

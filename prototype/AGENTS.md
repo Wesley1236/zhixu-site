@@ -1,5 +1,8 @@
 # Prototype Instructions
 
+## V16 reading workspace
+Fullscreen viewport reader, desktop PDF left and notebook right; mobile switches panes without losing reading state. Opening and page-render transitions are brief and reduced-motion aware. Scan annotations use normalized rectangles, not invented OCR text selection; underline/highlight/thought and local undo/export must retain prior notes. Keep password protections and distinguish local unencrypted notes from encrypted original books.
+
 ## V15 encrypted reading (latest user decision)
 Only encrypted copies of the 13 supplied books may be published; plaintext originals remain private. User sets a long passphrase via the local-only setup page, never through chat or an agent-entered credential. Click a book to unlock using native Web Crypto; do not persist the passphrase or derived key. Titles/catalog remain public and offline password guessing is possible. Preserve local notes; explicitly disclose that notes are unencrypted and not synced. Use rounded fonts throughout; scanned PDF glyphs are unchanged. Do not claim the whole website is private or encryption is unbreakable.
 
