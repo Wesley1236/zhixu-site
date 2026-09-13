@@ -1,5 +1,8 @@
 # Prototype Instructions
 
+## Clear glass and private-site direction
+Align homepage hero/search and portal grid on one left edge. Use transparent, unblurred glass for module controls; retain readable document pages and accessibility contrast overrides. User approved migrating to an authenticated private website, but hosting identity/configuration is not yet provided. Never publish original books or claim the existing GitHub Pages frontend is private.
+
 ## Authorized device persistence
 User explicitly approved remembering library authorization on each personal device. Opt-in checkbox (selected for this user's requested workflow), localStorage token scoped to a private repo, automatic verification on library entry, and sign out/forget are allowed. Explain same-origin-script/shared-device risks; do not describe this as encrypted storage. Never embed existing CLI credentials in the site. This supersedes prior memory-only requirements.
 
